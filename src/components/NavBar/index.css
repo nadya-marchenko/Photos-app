@@ -38,6 +38,10 @@ header {
     background: #2aa850;
 }
 
+.item-nav {
+    margin-left: 5px;
+}
+
 @media screen and (max-width: 500px) {
     .logo {
         margin-left: 15px;
@@ -48,5 +52,14 @@ header {
     .main-nav {
         font-size: 12px;
         margin: 0;
+    }
+
+    .main-nav ul {
+        padding-left: 0;
+    }
+
+    .item-nav {
+        margin-top: 5px;
+        display: block;
     }
 }

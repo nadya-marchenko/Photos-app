@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.css';
+import PhotoIcon from '@material-ui/icons/Photo';
+import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 const NavBar = () => (
@@ -9,9 +12,24 @@ const NavBar = () => (
         
         <nav className='main-nav'>
             <ul className='menu'>
-                <li><NavLink to='/profile/1/photos'>Photos</NavLink></li>
-                <li><NavLink to='/profile/1/albums'>Albums</NavLink></li>
-                <li><NavLink to='/profile/1'>Profile</NavLink></li>
+                <li>
+                    <NavLink to='/profile/1/photos'>
+                        <PhotoIcon style={{ verticalAlign: 'middle' }} /> 
+                        <span className='item-nav'>Photos</span>
+                        </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/profile/1/albums'>
+                        <PhotoAlbumIcon style={{ verticalAlign: 'middle' }} /> 
+                        <span className='item-nav'>Albums</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='/profile/1'>
+                        <AccountCircleIcon style={{ verticalAlign: 'middle' }} /> 
+                        <span className='item-nav'>Profile</span>
+                    </NavLink>
+                </li>
             </ul>
         </nav>
     </header>
