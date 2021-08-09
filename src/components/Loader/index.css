@@ -1,0 +1,10 @@
+.loader-area {
+    position: absolute;
+    left: 45%;
+    top: 40%;
+}
+
+.loading-text {
+    margin-left: 5px;
+    vertical-align: middle;
+}
