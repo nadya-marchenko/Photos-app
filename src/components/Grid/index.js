@@ -7,7 +7,7 @@ const Grid = ({ children, col }) => {
         <GridLayout>
             {React.Children.toArray(children).map((item) => {
                 return (
-                <GridItem key={children.key} style={{ flexBasis: `${(12 / col / 12) * 100 - 15}%`}}>
+                <GridItem maxColumnCount={col}>
                     {item}
                 </GridItem>
              )   

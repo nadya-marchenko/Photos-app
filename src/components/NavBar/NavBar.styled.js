@@ -5,7 +5,7 @@ export const Header = styled.header`
     align-items: center;
     justify-content: space-between;
     box-shadow: 0px 0px 15px black;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 `;
 
 export const Logo = styled.a`

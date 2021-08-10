@@ -1,14 +1,22 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Grid from './components/Grid';
-import Button from './components/Button';
+import Card from './components/Card';
+import testImg from './assets/images/test-img.png';
 
 const  App = () => 
     <BrowserRouter>
       <NavBar />
-      <Grid col='2'>
-        <Button color='default'>Search</Button>
-        <Button color='primary'>See more</Button>
+      <h1>Your photos</h1>
+      <Grid col='4'>
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
+        <Card url={testImg} title='Test image' />
       </Grid>
       <Switch>
         {/* <Route path="/" component={Loader}/> */}
