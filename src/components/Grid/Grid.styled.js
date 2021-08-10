@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const GridLayout = styled.section`
-    width: 60%;
+    width: ${(props) => props.maxColumnCount < 4 ? 70 : 60}%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -9,11 +9,11 @@ export const GridLayout = styled.section`
     align-items: center;
 
     @media screen and (max-width: 1024px) {
-        width: 80%;
+        width: ${(props) => props.maxColumnCount < 4 ? 90 : 80}%;
     }
 
     @media screen and (max-width: 768px) {
-        width: 90%;
+        width: ${(props) => props.maxColumnCount < 4 ? 50 : 90}%;
     }
 `;
 

@@ -4,7 +4,7 @@ import { GridItem, GridLayout } from './Grid.styled';
 
 const Grid = ({ children, col }) => {
     return(
-        <GridLayout>
+        <GridLayout maxColumnCount={col}>
             {React.Children.toArray(children).map((item) => {
                 return (
                 <GridItem maxColumnCount={col}>
