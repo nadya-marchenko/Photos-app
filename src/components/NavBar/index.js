@@ -1,38 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './index.css';
 import PhotoIcon from '@material-ui/icons/Photo';
 import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Header, Logo, NavWrapper } from './NavBar.styled';
+import NavItem from './NavItem';
 
 
-const NavBar = () => (
-    <header>
-        <a href="/" className='logo'>Photos App</a>
-        
-        <nav className='main-nav'>
-            <ul className='menu'>
-                <li>
-                    <NavLink to='/profile/1/photos'>
-                        <PhotoIcon style={{ verticalAlign: 'middle' }} /> 
-                        <span className='item-nav'>Photos</span>
-                        </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/profile/1/albums'>
-                        <PhotoAlbumIcon style={{ verticalAlign: 'middle' }} /> 
-                        <span className='item-nav'>Albums</span>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to='/profile/1'>
-                        <AccountCircleIcon style={{ verticalAlign: 'middle' }} /> 
-                        <span className='item-nav'>Profile</span>
-                    </NavLink>
-                </li>
-            </ul>
-        </nav>
-    </header>
-);
+const NavBar = () => {
+    const nav = [
+        { label: 'Photos', icon: <PhotoIcon style={{ verticalAlign: 'middle' }} />, id: 1 },
+        { label: 'Albums', icon: <PhotoAlbumIcon style={{ verticalAlign: 'middle' }} />, id: 2 },
+        { label: 'Profile', icon: <AccountCircleIcon style={{ verticalAlign: 'middle' }} />, id: 3 },
+    ];
+
+    return (
+        <Header>
+            <Logo href="/">Photos App</Logo>
+            <NavWrapper>
+                <ul>
+                    {nav.map(({ label, icon, id }) =>
+                        <NavItem key={id} label={label} icon={icon}  />
+                    )}
+                </ul>
+            </NavWrapper>
+        </Header>
+    );
+}
+    ;
 
 export default NavBar;

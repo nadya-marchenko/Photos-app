@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
+import { GridItem, GridLayout } from './Grid.styled';
 
-const Grid = (props) => {
+const Grid = ({ children, col }) => {
     return(
-        <section className='layout'>
-            {React.Children.toArray(props.children).map((item) => {
+        <GridLayout>
+            {React.Children.toArray(children).map((item) => {
                 return (
-                <article style={{ flexBasis: `${(12 / props.col / 12) * 100 - 15}%`}}>
+                <GridItem key={children.key} style={{ flexBasis: `${(12 / col / 12) * 100 - 15}%`}}>
                     {item}
-                </article>
+                </GridItem>
              )   
           })}
-        </section>
+        </GridLayout>
     )
 }
 
 Grid.propTypes = {
-    col: PropTypes.number.isRequired
+    col: PropTypes.string.isRequired
 }
 
 export default Grid;
