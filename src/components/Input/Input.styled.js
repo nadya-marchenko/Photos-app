@@ -4,9 +4,10 @@ import { colors } from '../../global/colors';
 export const InputWrapper = styled.article`
     border-radius: 4px;
     position: relative;
-
+    width: ${(props) => props.type === 'search' && '260'}px;
+    
     & input {
-        padding: 17px 9px 8px 9px;
+        padding: ${(props) => props.type === 'search' ? '26px 4px 18px 34px' : '17px 9px 8px 9px'};
         width: 95%;
         height: 1.19em;
         margin: 0;
@@ -42,5 +43,9 @@ export const TextFieldSet = styled.fieldset`
         padding-left: 5px;
         padding-right: 5px;
     }
-    
+`;
+
+export const InputIcon = styled.span`
+    position: absolute;
+    top: 12px;
 `;
