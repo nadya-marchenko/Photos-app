@@ -5,6 +5,7 @@ import testImg from './assets/images/test-img.png';
 import AlbumCard from './components/AlbumCard';
 import Card from './components/Card';
 import Input from './components/Input';
+import Select from './components/Select';
 
 const previewPhotos = [testImg, testImg, testImg];
 
@@ -16,6 +17,7 @@ const  App = () =>
         <Input type='text' label='Name' id='Name' />
         <Input type='email' label='Email' id='Email' />
         <Input type='url' label='Website' id='Website' />
+        <Select label='Pre page' id='Page' options={[10, 20, 30, 40]} />
         {/* <Card url={testImg} title={'Test image'}/> */}
         {/* <AlbumCard previewPhotos={previewPhotos} link={'/album/6'} title='Test image' /> */}
       </Grid>
