@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../global/colors";
 
-
 export const BtnWrapper = styled.a`
     border-radius: 4px;
     text-transform: uppercase;
@@ -17,27 +16,29 @@ export const BtnWrapper = styled.a`
     transition-duration: 0.4s;
     cursor: pointer;
     float: right;
+    background-color: ${(props) => {
+        if(props.color === 'primary') {
+            return colors.bgColor;
+        }
 
-    &.primary-color-btn {
-        background-color: ${colors.bgColor}; 
-        color: ${colors.textColor}; 
-        border: 2px solid ${colors.primary};
-    }
+        if(props.color === 'default') {
+            return colors.default;
+        }
+    }};
+    color: ${colors.textColor};
+    border: 2px solid ${(props) => {
+        if(props.color === 'primary') {
+            return colors.primary;
+        }
 
-    &.primary-color-btn:hover {
+        if(props.color === 'default') {
+            return colors.default;
+        }
+    }};
+
+    &:hover {
         background-color: ${colors.primary};
         color: ${colors.bgColor};
-    }
-
-    &.default-color-btn {
-        background-color: ${colors.default};
-        color: ${colors.textColor}; 
-        border: 2px solid ${colors.default};
-    }
-    
-    &.default-color-btn:hover {
-        background-color: ${colors.primary};
         border: 2px solid ${colors.primary};
-        color: ${colors.bgColor};
     }
 `;

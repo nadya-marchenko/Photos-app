@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import { AlbumCardWrapper, AlbumNameWrapper } from './AlbumCard.styled';
+import { AlbumCardWrapper, AlbumNameWrapper, BtnLabel } from './AlbumCard.styled';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const AlbumCard = ({ previewPhotos, link, title }) => 
@@ -15,7 +15,7 @@ const AlbumCard = ({ previewPhotos, link, title }) =>
             )} 
         </section>
         <Button link={link} color='primary'>
-            <span className='btn-text'>See more</span>
+            <BtnLabel>See more</BtnLabel>
             <NavigateNextIcon style={{ verticalAlign: 'middle' }} />
         </Button>
     </AlbumCardWrapper>;

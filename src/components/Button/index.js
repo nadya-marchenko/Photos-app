@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BtnWrapper } from './Button.styled';
 
 const Button = ({ children, color, link }) =>
-    <BtnWrapper className={`btn ${color}-color-btn`} href={link}>
+    <BtnWrapper color={color} href={link}>
         {children}
     </BtnWrapper>;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSizes } from "../../global/device-sizes";
 
 export const GridLayout = styled.section`
     width: ${(props) => props.maxColumnCount < 4 ? 70 : 60}%;
@@ -8,11 +9,11 @@ export const GridLayout = styled.section`
     flex-wrap: wrap;
     align-items: center;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: ${deviceSizes.desktop}) {
         width: ${(props) => props.maxColumnCount < 4 ? 90 : 80}%;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: ${deviceSizes.tablets}) {
         width: ${(props) => props.maxColumnCount < 4 ? 50 : 90}%;
     }
 `;
@@ -23,15 +24,15 @@ export const GridItem = styled.article`
     margin: 16px;
     flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 - 6}%;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: ${deviceSizes.tablets}) {
         flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 }%;
     }
 
-    @media screen and (max-width: 540px) {
+    @media screen and (max-width: ${deviceSizes.phone}) {
         flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 + 5 }%;
     }
 
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: ${deviceSizes.smallPhone}) {
         flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 + 16 }%;
     }
 `;
