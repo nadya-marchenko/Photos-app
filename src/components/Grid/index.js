@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GridItem, GridLayout } from './Grid.styled';
+import { GridLayout } from './Grid.styled';
 
 const Grid = ({ children, col }) => {
     return(
         <GridLayout maxColumnCount={col}>
             {React.Children.toArray(children).map((item) =>
-                <GridItem maxColumnCount={col}>
-                    {item}
-                </GridItem>)}
+                item
+            )}
         </GridLayout>
     )
 }

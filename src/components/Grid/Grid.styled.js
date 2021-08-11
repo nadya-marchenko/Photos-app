@@ -17,22 +17,3 @@ export const GridLayout = styled.section`
         width: ${(props) => props.maxColumnCount < 4 ? 50 : 90}%;
     }
 `;
-
-export const GridItem = styled.article`
-    flex: 1 1 0;
-    text-align: center;
-    margin: 16px;
-    flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 - 6}%;
-
-    @media screen and (max-width: ${deviceSizes.tablets}) {
-        flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 }%;
-    }
-
-    @media screen and (max-width: ${deviceSizes.phone}) {
-        flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 + 5 }%;
-    }
-
-    @media screen and (max-width: ${deviceSizes.smallPhone}) {
-        flex-basis: ${(props) => (12 / props.maxColumnCount / 12) * 100 + 16 }%;
-    }
-`;
