@@ -37,17 +37,17 @@ export const CardWrapper = styled.article`
 
 export const TitleWrapper = styled.div`
     text-align: center;
-    padding: 3px 20px 6px 20px;
+    padding: 0 20px 3px 20px;
     border-radius: 5px;
     font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 
     & p {
-        line-height: 1.8;
+        line-height: 3;
         margin: 2px 0;
         text-transform: capitalize;
     }

@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { colors } from "../../global/colors";
 
 export const BtnWrapper = styled.a`
+    height: 20px;
     border-radius: 4px;
     text-transform: uppercase;
     background-color: ${colors.primary};
     border: none;
-    padding: 8px 20px;
-    margin: 4px 2px;
+    padding: 6px 12px 6px 12px;
+    margin: 2px 7px;
     color: ${colors.bgColor};
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     transition-duration: 0.4s;
     cursor: pointer;
     float: right;
