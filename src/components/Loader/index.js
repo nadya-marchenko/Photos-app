@@ -3,9 +3,9 @@ import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import { LoaderArea, LoaderText } from './Loader.styled';
 
 const Loader = () => 
-    <LoaderArea className='loader-area'>
+    <LoaderArea>
         <HourglassEmptyIcon style={{ verticalAlign: 'middle' }} />
-        <LoaderText className='loading-text'>Loading...</LoaderText>
+        <LoaderText>Loading...</LoaderText>
     </LoaderArea>;
 
 export default Loader;

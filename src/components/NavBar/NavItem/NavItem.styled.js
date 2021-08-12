@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../global/colors";
+import { deviceSizes } from "../../../global/device-sizes";
 
 export const NavContainer = styled.li`
     & a {
@@ -18,14 +19,12 @@ export const NavContainer = styled.li`
         color: #${colors.bgColor};
         background: ${colors.primary};
     }
+`;
 
-    &.item-nav {
-        margin-left: 5px;
-    }
+export const NavItemLabel = styled.span`
+    margin-left: 5px;
 
-    @media screen and (max-width: 500px) {
-        &.item-nav {
-            margin-top: 5px;
-            display: block;
-        }
+    @media screen and (max-width: ${deviceSizes.phone}) {
+        margin-top: 5px;
+        display: block;
 `;

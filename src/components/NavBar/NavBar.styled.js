@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSizes } from "../../global/device-sizes";
 
 export const Header = styled.header`
     display: flex;
@@ -13,7 +14,7 @@ export const Logo = styled.a`
     text-decoration: none;
     text-transform: uppercase;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: ${deviceSizes.phone}) {
         margin-left: 15px;
         text-align: center;
         font-size: 10px;
@@ -29,7 +30,7 @@ export const NavWrapper = styled.nav`
         margin: 0;
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: ${deviceSizes.phone}) {
         font-size: 12px;
         margin: 0;
     
