@@ -18,7 +18,6 @@ const Photos = ({ images, filterImages }) => {
 
     const handleSearchBtn = (e) => {
         e.preventDefault();
-        console.log('in photo comp', inputValue);
         filterImages(inputValue);
     };
 
@@ -44,7 +43,7 @@ const Photos = ({ images, filterImages }) => {
                 </SearchRow>
             </PhotoHeadContainer>
             <Grid col='4'>
-                {images.length < 1 
+                {!images.length 
                     ? <NoResult message='No results. Please, try again' /> 
                     : images.map(image =>
                         <Card key={image.id} url={image.url} title={image.title} col='4'/>

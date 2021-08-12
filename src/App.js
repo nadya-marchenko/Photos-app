@@ -5,6 +5,7 @@ import Photos from './pages/Photos';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import NoResult from './components/NoResult';
+import Loader from './components/Loader';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/albums/1/photos';
 
@@ -12,6 +13,7 @@ const App = () => {
   const [photos, setPhotos] = useState([]);
   const [filteredValue, setFilteredValue] = useState('');
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const checkErrorsFromAPI = (response) => {
     if(response.status !== 200) {
@@ -24,12 +26,12 @@ const App = () => {
     const getPhoto = () => {
       axios.get(API_URL)
       .then(response => {
-        console.log('response', response);
         setPhotos(response.data)
       })
-      .catch(() => checkErrorsFromAPI());
+      .catch(() => checkErrorsFromAPI())
+      .finally(() => setIsLoading(false));
     } 
-
+    setIsLoading(true);
     getPhoto();
   }, [filteredValue]);
 
@@ -46,7 +48,9 @@ const App = () => {
       <NavBar />
       {isError 
         ? <NoResult message='Problems with API. Please try again' />
-        : <Photos images={filteredPhotos} filterImages={filterData} /> }
+        : (isLoading 
+            ? <Loader />
+            : <Photos images={filteredPhotos} filterImages={filterData} />)}
       
       {/* <h1>Your profile</h1> */}
       {/* <Grid col='3'> */}
