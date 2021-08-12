@@ -4,25 +4,50 @@ import testImg from './assets/images/test-img.png';
 import Photos from './pages/Photos';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import NoResult from './components/NoResult';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/albums/1/photos';
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
+  const [filteredValue, setFilteredValue] = useState('');
+  const [isError, setIsError] = useState(false);
 
-  const getPhotos = () => {
-    axios.get(API_URL)
+  const checkErrorsFromAPI = (response) => {
+    if(response.status !== 200) {
+      setIsError(true);
+      throw new Error(response.statusText);
+    }
+  };
+
+  useEffect(() => {
+    const getPhoto = () => {
+      axios.get(API_URL)
       .then(response => {
-        setPhotos(response.data);
+        console.log('response', response);
+        setPhotos(response.data)
       })
-  }
+      .catch(() => checkErrorsFromAPI());
+    } 
 
-  useEffect(() => getPhotos(), []);
+    getPhoto();
+  }, [filteredValue]);
+
+  const filterData = (newFilteredValue) => {
+    setFilteredValue(newFilteredValue);
+  };
+
+  const getFilteredPhotos = (photos, filteredValue) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
+
+  const filteredPhotos = getFilteredPhotos(photos, filteredValue);
 
   return (
     <BrowserRouter>
       <NavBar />
-      <Photos images={photos} />
+      {isError 
+        ? <NoResult message='Problems with API. Please try again' />
+        : <Photos images={filteredPhotos} filterImages={filterData} /> }
+      
       {/* <h1>Your profile</h1> */}
       {/* <Grid col='3'> */}
         {/* <Input type='search' label='Search by title' id='search' icon={<SearchIcon />} />

@@ -24,7 +24,7 @@ export const PageHeadline = styled.h1`
     margin-right: 10px;
 `;
 
-export const SearchRow = styled.section`
+export const SearchRow = styled.form`
     display: flex;
     float: right;
 `;

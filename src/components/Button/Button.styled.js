@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { colors } from "../../global/colors";
 
-export const BtnWrapper = styled.a`
+export const BtnWrapper = styled.button`
     height: 20px;
     border-radius: 4px;
     text-transform: uppercase;
     background-color: ${colors.primary};
     border: none;
-    padding: 6px 12px 6px 12px;
+    padding: 7px 12px 24px 12px;
     margin: 2px 7px;
     color: ${colors.bgColor};
     text-align: center;
