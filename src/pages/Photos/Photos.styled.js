@@ -26,5 +26,4 @@ export const PageHeadline = styled.h1`
 
 export const SearchRow = styled.form`
     display: flex;
-    float: right;
 `;

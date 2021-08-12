@@ -5,10 +5,10 @@ export const InputWrapper = styled.article`
     height: 37px;
     border-radius: 4px;
     position: relative;
-    max-width: ${(props) => props.type === 'search' && '225'}px;
+    max-width: ${({ type }) => type === 'search' && '225'}px;
     
     & input {
-        padding: ${(props) => props.type === 'search' ? '22px 5px 12px 39px' : '17px 9px 8px 9px'};
+        padding: ${({ type }) => type === 'search' ? '22px 5px 12px 39px' : '17px 9px 8px 9px'};
         width: 100%;
         height: 1.19em;
         margin: 0;

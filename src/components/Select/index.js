@@ -5,9 +5,7 @@ import { InputWrapper, SelectFieldSet } from './Select.styled';
 const Select = ({ label, id, options }) => {
     const [value, setValue] = useState('');
 
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    };
+    const handleChange = e => setValue(e.target.value);
 
     return(
         <InputWrapper>

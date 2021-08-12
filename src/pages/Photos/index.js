@@ -3,7 +3,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Grid from '../../components/Grid';
 import Input from '../../components/Input';
-import { NotResultMessage, PageHeadline, PhotoHeadContainer, SearchRow } from './Photos.styled';
+import { PageHeadline, PhotoHeadContainer, SearchRow } from './Photos.styled';
 import SearchIcon from '@material-ui/icons/Search';
 import Pagination from '../../components/Pagination';
 import PropTypes from 'prop-types';

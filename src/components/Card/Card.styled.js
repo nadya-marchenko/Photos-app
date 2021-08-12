@@ -11,7 +11,7 @@ export const CardWrapper = styled.article`
     flex: 1 1 0;
     text-align: center;
     margin: 16px;
-    flex-basis: ${(props) => (12 / props.col / 12) * 100 - 6}%;
+    flex-basis: ${({ col }) => (12 / col / 12) * 100 - 6}%;
 
     & img {
         width: 100%;
@@ -23,15 +23,15 @@ export const CardWrapper = styled.article`
     }
 
     @media screen and (max-width: ${deviceSizes.tablets}) {
-        flex-basis: ${(props) => (12 / props.col / 12) * 100 }%;
+        flex-basis: ${({ col }) => (12 / col / 12) * 100 }%;
     }
 
     @media screen and (max-width: ${deviceSizes.phone}) {
-        flex-basis: ${(props) => (12 / props.col / 12) * 100 + 5 }%;
+        flex-basis: ${({ col }) => (12 / col / 12) * 100 + 5 }%;
     }
 
     @media screen and (max-width: ${deviceSizes.smallPhone}) {
-        flex-basis: ${(props) => (12 / props.col / 12) * 100 + 16 }%;
+        flex-basis: ${({ col }) => (12 / col / 12) * 100 + 16 }%;
     }
 `;
 

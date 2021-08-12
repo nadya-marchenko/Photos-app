@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { deviceSizes } from "../../global/device-sizes";
 
 export const GridLayout = styled.section`
-    width: ${(props) => props.maxColumnCount < 4 ? 70 : 60}%;
+    width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 70 : 60}%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -10,10 +10,10 @@ export const GridLayout = styled.section`
     align-items: center;
 
     @media screen and (max-width: ${deviceSizes.desktop}) {
-        width: ${(props) => props.maxColumnCount < 4 ? 90 : 80}%;
+        width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 90 : 80}%;
     }
 
     @media screen and (max-width: ${deviceSizes.tablets}) {
-        width: ${(props) => props.maxColumnCount < 4 ? 50 : 90}%;
+        width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 50 : 90}%;
     }
 `;

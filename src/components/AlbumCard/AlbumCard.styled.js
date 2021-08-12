@@ -20,11 +20,6 @@ export const AlbumCardWrapper = styled.article`
         margin-bottom: 30px;
         padding: 4px 7px;
     }
-
-    & a {
-        margin: 0 10px 15px 0;
-        float: right;
-    }
 `;
 
 export const AlbumNameWrapper = styled.div`
@@ -42,4 +37,14 @@ export const AlbumNameWrapper = styled.div`
 
 export const BtnLabel = styled.span`
     vertical-align: middle;
+`;
+
+export const BtnWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+
+    & button {
+        pudding-top: 4px;
+        //  9px 28px 12px;
+    }
 `;
