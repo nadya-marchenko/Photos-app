@@ -1,75 +1,28 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import testImg from './assets/images/test-img.png';
-import AlbumCard from './components/AlbumCard';
-import Input from './components/Input';
-import SearchIcon from '@material-ui/icons/Search';
-import Select from './components/Select';
-import Button from './components/Button';
 import Photos from './pages/Photos';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-const previewPhotos = [
-  {
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 2,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 3,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 4,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 5,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 6,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 7,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  },
-  {
-    "albumId": 1,
-    "id": 8,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": testImg,
-    "thumbnailUrl": testImg
-  }];
+const API_URL = 'https://jsonplaceholder.typicode.com/albums/1/photos';
 
-const App = () => 
+const App = () => {
+  const [photos, setPhotos] = useState([]);
+
+  const getPhotos = () => {
+    axios.get(API_URL)
+      .then(response => {
+        setPhotos(response.data);
+      })
+  }
+
+  useEffect(() => getPhotos(), []);
+
+  return (
     <BrowserRouter>
       <NavBar />
-      <Photos images={previewPhotos} />
+      <Photos images={photos} />
       {/* <h1>Your profile</h1> */}
       {/* <Grid col='3'> */}
         {/* <Input type='search' label='Search by title' id='search' icon={<SearchIcon />} />
@@ -84,6 +37,9 @@ const App = () =>
         {/* <Route path="/profile/1/photos" /> */}
         {/* <Route component={NotFound} /> */}
       {/* </Switch> */}
-    </BrowserRouter>;
+    </BrowserRouter>
+  );
+}
+    ;
 
 export default App;
