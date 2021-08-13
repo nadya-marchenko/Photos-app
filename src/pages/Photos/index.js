@@ -8,9 +8,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import Pagination from '../../components/Pagination';
 import PropTypes from 'prop-types';
 import NoResult from '../../components/NoResult';
+import ModalZoom from '../../components/ModalZoom';
 
 const Photos = ({ images, filterImages }) => {
-    const [ inputValue, setInputValue ] = useState('');
+    const [inputValue, setInputValue] = useState('');
+    const [clickedCard, setClickedCard] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleInput = e => {
         setInputValue(e.target.value);
@@ -20,6 +23,16 @@ const Photos = ({ images, filterImages }) => {
         e.preventDefault();
         filterImages(inputValue);
     };
+
+    const openModal = (id) =>  {
+        const openedCard = images.filter(image => image.id === id)[0];
+        setIsModalOpen(true);
+        setClickedCard(openedCard);
+    };
+
+    const closeModal = (event) => {
+        setIsModalOpen(false);
+    }
 
     return (
         <>
@@ -43,10 +56,23 @@ const Photos = ({ images, filterImages }) => {
                 </SearchRow>
             </PhotoHeadContainer>
             <Grid col='4'>
+                {isModalOpen &&
+                     <ModalZoom 
+                        largeImg={clickedCard.url} 
+                        title={clickedCard.title}
+                        handleCloseModal={closeModal}
+                    />}
                 {!images.length 
                     ? <NoResult message='No results. Please, try again' /> 
                     : images.map(image =>
-                        <Card key={image.id} url={image.url} title={image.title} col='4'/>
+                        <Card
+                            key={image.id} 
+                            id={image.id} 
+                            url={image.thumbnailUrl} 
+                            title={image.title} 
+                            col='4'
+                            handleZoom={openModal}
+                        />
                     )}
             </Grid>
             {images.length > 10 && <Pagination activePage={1} pageNum={12} showedAmount={5} />}
