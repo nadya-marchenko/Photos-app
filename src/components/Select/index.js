@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputWrapper, SelectFieldSet } from './Select.styled';
 
-const Select = ({ label, id, options }) => {
+const Select = ({ label, id, options, handleSettingPerPageValue }) => {
     const [value, setValue] = useState('');
 
-    const handleChange = e => setValue(e.target.value);
+    const handleChange = e => {
+        setValue(e.target.value);
+        handleSettingPerPageValue(e.target.value);
+    };
 
     return(
         <InputWrapper>
@@ -26,7 +29,8 @@ const Select = ({ label, id, options }) => {
 Select.propTypes = {
     label: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    options: PropTypes.array.isRequired
+    options: PropTypes.array.isRequired,
+    handleSettingPerPageValue: PropTypes.func
 };
 
 export default Select;

@@ -1,0 +1,1 @@
+export const getFilledArray = (num) => Array.from({length: num}, (_, i) => i + 1);

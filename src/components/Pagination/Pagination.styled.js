@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../global/colors';
 
 export const PaginationContainer = styled.section`
     display: flex;
@@ -20,13 +21,15 @@ export const PaginationContainer = styled.section`
     }
 `;
 
-export const LastElement = styled.span`
-    width: 17px;
-    padding: 4px;
-    height: 17px;
-    cursor: pointer;
-`;
-
 export const IconArrow = styled.div`
-    cursor: pointer;
+    svg {
+        &.MuiSvgIcon-root {
+            font-size: 12px;
+            color: ${({ isDisable }) => isDisable ? colors.default : colors.textColor};
+            cursor: ${({ isDisable }) => isDisable ? 'auto' : 'pointer'};
+        }
+
+        &.MuiSvgIcon-root:hover {
+            color: ${({ isDisable }) => isDisable ? colors.default : colors.primary};
+        }
 `;
