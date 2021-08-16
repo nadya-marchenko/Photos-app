@@ -17,7 +17,7 @@ const AlbumCard = ({ previewPhotos, link, title }) =>
         <BtnWrapper>
             <Button link={link} color='primary'>
                 <BtnLabel>See more</BtnLabel>
-                <NavigateNextIcon style={{ verticalAlign: 'middle' }} />
+                <NavigateNextIcon />
             </Button>
         </BtnWrapper>
     </AlbumCardWrapper>;

@@ -26,7 +26,7 @@ export const IconArrow = styled.div`
     svg {
         &.MuiSvgIcon-root {
             font-size: 12px;
-            color: ${({ isDisable }) => isDisable ? colors.default : colors.textColor};
+            color: ${({ isDisable }) => isDisable ? colors.default : colors.black};
             cursor: ${({ isDisable }) => isDisable ? 'auto' : 'pointer'};
         }
 

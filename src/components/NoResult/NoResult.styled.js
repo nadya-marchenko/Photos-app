@@ -7,4 +7,10 @@ export const MessageWrapper = styled.p`
     & span {
         margin-left: 7px;
     }
+
+    svg {
+        &.MuiSvgIcon-root {
+            vertical-align: middle;
+        }
+    }
 `;

@@ -11,9 +11,12 @@ import NoResult from '../../components/NoResult';
 import ModalZoom from '../../components/ModalZoom';
 import axios from 'axios';
 import Loader from '../../components/Loader';
+import { checkErrorsFromAPI } from '../../utils';
 
 
-const Photos = ({ profile }) => {
+const Photos = ({ apiUrl, album }) => {
+    const API_URL_PHOTOS = `${apiUrl}/albums/${album}/photos`;
+
     const [photos, setPhotos] = useState([]);
     const [filteredValue, setFilteredValue] = useState('');
     const [isError, setIsError] = useState(false);
@@ -29,17 +32,11 @@ const Photos = ({ profile }) => {
 
     const photosShowed = photos.slice(firstIndexShowedCard, lastIndexShowedCard);
     
-    const API_URL = `https://jsonplaceholder.typicode.com/albums/${profile}/photos`;
-
     const pageNum = Math.ceil(photos.length / cardsPerPage);
 
-    const handleInput = e => {
-        setInputValue(e.target.value);
-    };
+    const handleInput = e => setInputValue(e.target.value);
 
-    const filterImages = (newFilteredValue) => {
-        setFilteredValue(newFilteredValue);
-    };
+    const filterImages = (newFilteredValue) => setFilteredValue(newFilteredValue);
 
     const handleSearchBtn = (e) => {
         e.preventDefault();
@@ -52,29 +49,23 @@ const Photos = ({ profile }) => {
         setClickedCard(openedCard);
     };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
-
-    const checkErrorsFromAPI = (response) => {
-        if(response.status !== 200) {
-            setIsError(true);
-            throw new Error(response.statusText);
-        }
-    };
+    const closeModal = () => setIsModalOpen(false);
 
     useEffect(() => {
         const getPhoto = () => {
-            axios.get(API_URL)
+            axios.get(API_URL_PHOTOS)
                 .then(response => {
                     setPhotos(getFilteredPhotos(response.data, filteredValue))
                 })
-                .catch(() => checkErrorsFromAPI())
+                .catch(() => {
+                    setIsError(true);
+                    checkErrorsFromAPI();
+                })
                 .finally(() => setIsLoading(false));
         } 
         setIsLoading(true);
         getPhoto();
-    }, [API_URL, filteredValue]);
+    }, [API_URL_PHOTOS, filteredValue]);
 
     const getFilteredPhotos = (photos, filteredValue) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
@@ -148,7 +139,8 @@ const Photos = ({ profile }) => {
 };
 
 Photos.propTypes = {
-    profile: PropTypes.string.isRequired,
+    apiUrl: PropTypes.string.isRequired,
+    album: PropTypes.string.isRequired,
 }
 
 export default Photos;

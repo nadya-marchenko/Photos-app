@@ -28,14 +28,14 @@ export const SelectFieldSet = styled.fieldset`
     margin: 0;
     padding: 0 8px;
     position: absolute;
-    border: 1px ${colors.formBorderColor} solid;
+    border: 1px ${colors.grey} solid;
     border-radius: 4px;
     overflow: hidden;
     pointer-events: none;
 
     & legend {
         text-align: left;
-        color: ${colors.formBorderColor};
+        color: ${colors.grey};
         font-size: 13px;
     }
 

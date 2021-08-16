@@ -4,7 +4,7 @@ import { LoaderArea, LoaderText } from './Loader.styled';
 
 const Loader = () => 
     <LoaderArea>
-        <HourglassEmptyIcon style={{ verticalAlign: 'middle' }} />
+        <HourglassEmptyIcon />
         <LoaderText>Loading...</LoaderText>
     </LoaderArea>;
 

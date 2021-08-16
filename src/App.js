@@ -2,14 +2,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Photos from './pages/Photos';
 
-const App = () => {
-  
+const API_URL = `https://jsonplaceholder.typicode.com`;
 
-  return (
-    <BrowserRouter>
+const App = () => 
+  <BrowserRouter>
       <NavBar />
       
-      <Photos profile={'1'} />
+      <Photos apiUrl={API_URL} album={'1'} />
       {/* <h1>Your profile</h1> */}
       {/* <Grid col='3'> */}
         {/* <Input type='search' label='Search by title' id='search' icon={<SearchIcon />} />
@@ -24,9 +23,6 @@ const App = () => {
         {/* <Route path="/profile/1/photos" /> */}
         {/* <Route component={NotFound} /> */}
       {/* </Switch> */}
-    </BrowserRouter>
-  );
-}
-    ;
+    </BrowserRouter>;
 
 export default App;
