@@ -83,7 +83,10 @@ const Photos = ({ profile }) => {
             && setCurrentPage(newCurrentPage);
     } 
 
-    const changePerPageValue = newPerPageValue => setCardsPerPage(newPerPageValue);
+    const changePerPageValue = newPerPageValue => {
+        setCardsPerPage(newPerPageValue);
+        setCurrentPage(1);
+    };
 
     return (
         <>

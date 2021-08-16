@@ -7,7 +7,7 @@ import PaginationElement from './PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
 
-const perPageVariants = [7, 10, 20, 30, 40];
+const perPageVariants = [7, 10, 20, 30, 40, 60];
 
 const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }) => {
     const getElements = () => getFilledArray(pageNum - 1);
