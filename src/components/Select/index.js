@@ -7,7 +7,7 @@ const Select = ({ label, id, options, handleSettingPerPageValue }) => {
 
     const handleChange = e => {
         setValue(e.target.value);
-        handleSettingPerPageValue(e.target.value);
+        handleSettingPerPageValue(+e.target.value);
     };
 
     return(
