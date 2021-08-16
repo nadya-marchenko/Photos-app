@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Grid from '../../components/Grid';
-import Input from '../../components/Input';
-import { PageHeadline, PhotoHeadContainer, SearchRow } from './Photos.styled';
-import SearchIcon from '@material-ui/icons/Search';
+import { PageHeadline, PhotoHeadContainer } from './Photos.styled';
 import Pagination from '../../components/Pagination';
 import PropTypes from 'prop-types';
 import NoResult from '../../components/NoResult';
@@ -12,6 +9,7 @@ import ModalZoom from '../../components/ModalZoom';
 import axios from 'axios';
 import Loader from '../../components/Loader';
 import { checkErrorsFromAPI } from '../../utils';
+import Search from '../../components/Search';
 
 
 const Photos = ({ apiUrl, album }) => {
@@ -21,7 +19,6 @@ const Photos = ({ apiUrl, album }) => {
     const [filteredValue, setFilteredValue] = useState('');
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [inputValue, setInputValue] = useState('');
     const [clickedCard, setClickedCard] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [cardsPerPage, setCardsPerPage] = useState(7);
@@ -34,14 +31,7 @@ const Photos = ({ apiUrl, album }) => {
     
     const pageNum = Math.ceil(photos.length / cardsPerPage);
 
-    const handleInput = e => setInputValue(e.target.value);
-
     const filterImages = (newFilteredValue) => setFilteredValue(newFilteredValue);
-
-    const handleSearchBtn = (e) => {
-        e.preventDefault();
-        filterImages(inputValue);
-    };
 
     const openModal = (id) =>  {
         const openedCard = photos.filter(image => image.id === id)[0];
@@ -83,22 +73,7 @@ const Photos = ({ apiUrl, album }) => {
         <>
             <PhotoHeadContainer>
                 <PageHeadline>Your photos</PageHeadline>
-                <SearchRow onSubmit={handleSearchBtn} >
-                    <Input 
-                        type='search' 
-                        label='Search by title' 
-                        id='search' 
-                        icon={<SearchIcon />}
-                        value={inputValue}
-                        onChangeHandler={handleInput}
-                    />
-                    <Button 
-                        type='submit'
-                        color='default'
-                    >
-                        Search
-                    </Button>
-                </SearchRow>
+                <Search filterImages={filterImages} />
             </PhotoHeadContainer>
             {isError 
             ? <NoResult message='Problems with API. Please try again' />

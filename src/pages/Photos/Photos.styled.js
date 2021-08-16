@@ -23,7 +23,3 @@ export const PageHeadline = styled.h1`
     font-weight: 500;
     margin-right: 10px;
 `;
-
-export const SearchRow = styled.form`
-    display: flex;
-`;
