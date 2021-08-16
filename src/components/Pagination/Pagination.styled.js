@@ -5,6 +5,7 @@ export const PaginationContainer = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
     margin: 10px 0;
 
