@@ -12,7 +12,8 @@ import WithLoading from '../../components/WithLoading';
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
 
-const Photos = ({ apiUrl, album }) => {
+const Photos = ({ apiUrl, match }) => {
+    const album = match.params.album;
     const API_URL_PHOTOS = `${apiUrl}/albums/${album}/photos`;
 
     const [photos, setPhotos] = useState([]);
@@ -88,7 +89,6 @@ const Photos = ({ apiUrl, album }) => {
 
 Photos.propTypes = {
     apiUrl: PropTypes.string.isRequired,
-    album: PropTypes.string.isRequired,
 }
 
 export default Photos;
