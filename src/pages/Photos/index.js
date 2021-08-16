@@ -67,18 +67,16 @@ const Photos = ({ profile }) => {
         const getPhoto = () => {
             axios.get(API_URL)
                 .then(response => {
-                    setPhotos(response.data)
+                    setPhotos(getFilteredPhotos(response.data, filteredValue))
                 })
                 .catch(() => checkErrorsFromAPI())
                 .finally(() => setIsLoading(false));
         } 
         setIsLoading(true);
         getPhoto();
-    }, [API_URL]);
+    }, [API_URL, filteredValue]);
 
     const getFilteredPhotos = (photos, filteredValue) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
-
-    const filteredPhotos = getFilteredPhotos(photos, filteredValue);
 
     const changeCurrentPage = newCurrentPage => {
         !(newCurrentPage < 1 || newCurrentPage > pageNum) 

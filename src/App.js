@@ -1,10 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import testImg from './assets/images/test-img.png';
 import Photos from './pages/Photos';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import NoResult from './components/NoResult';
 
 const App = () => {
   
