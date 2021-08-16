@@ -27,4 +27,5 @@ export const NavItemLabel = styled.span`
     @media screen and (max-width: ${deviceSizes.phone}) {
         margin-top: 5px;
         display: block;
+    }
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import { AlbumCardWrapper, AlbumNameWrapper, BtnLabel } from './AlbumCard.styled';
+import { AlbumCardWrapper, AlbumNameWrapper, BtnLabel, BtnWrapper } from './AlbumCard.styled';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const AlbumCard = ({ previewPhotos, link, title }) => 
@@ -14,10 +14,12 @@ const AlbumCard = ({ previewPhotos, link, title }) =>
                 <img src={src} alt={title} />
             )} 
         </section>
-        <Button link={link} color='primary'>
-            <BtnLabel>See more</BtnLabel>
-            <NavigateNextIcon style={{ verticalAlign: 'middle' }} />
-        </Button>
+        <BtnWrapper>
+            <Button link={link} color='primary'>
+                <BtnLabel>See more</BtnLabel>
+                <NavigateNextIcon style={{ verticalAlign: 'middle' }} />
+            </Button>
+        </BtnWrapper>
     </AlbumCardWrapper>;
 
 AlbumCard.propTypes = {

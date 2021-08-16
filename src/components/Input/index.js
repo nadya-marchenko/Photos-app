@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InputIcon, InputWrapper, TextFieldSet } from './Input.styled';
 
-const Input = ({ type, label, id, icon }) => 
+const Input = ({ type, label, id, icon, onChangeHandler, value }) => 
     <InputWrapper type={type}>
         {type === 'search' && <InputIcon>{icon}</InputIcon>}
-        <input type={type} id={id} />
+        <input type={type} id={id} value={value} onChange={onChangeHandler} />
         <TextFieldSet>
             <legend>
                 <span>{label}</span>
@@ -17,7 +17,9 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    onChangeHandler: PropTypes.func,
+    value: PropTypes.string
 };
 
 export default Input;

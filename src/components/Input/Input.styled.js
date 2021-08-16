@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { colors } from '../../global/colors';
 
 export const InputWrapper = styled.article`
+    height: 37px;
     border-radius: 4px;
     position: relative;
-    width: ${(props) => props.type === 'search' && '260'}px;
+    max-width: ${({ type }) => type === 'search' && '225'}px;
     
     & input {
-        padding: ${(props) => props.type === 'search' ? '26px 4px 18px 34px' : '17px 9px 8px 9px'};
-        width: 95%;
+        padding: ${({ type }) => type === 'search' ? '22px 5px 12px 39px' : '17px 9px 8px 9px'};
+        width: 100%;
         height: 1.19em;
         margin: 0;
         border: 0;
@@ -47,5 +48,6 @@ export const TextFieldSet = styled.fieldset`
 
 export const InputIcon = styled.span`
     position: absolute;
-    top: 12px;
+    top: 10px;
+    left: 8px;
 `;
