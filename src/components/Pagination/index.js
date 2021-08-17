@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import PaginationElement from './PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
-
-const perPageVariants = [7, 10, 20, 30, 40, 60];
+import { perPageOptions } from '../../global/app-config-constants';
 
 const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }) => {
     const getElements = () => getFilledArray(pageNum - 1);
@@ -59,7 +58,7 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
             <Select
                 label='Per page' 
                 id='Page' 
-                options={perPageVariants}
+                options={perPageOptions}
                 handleSettingPerPageValue={changePerPageValue}
             />
         </PaginationContainer>

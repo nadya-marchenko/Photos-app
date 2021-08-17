@@ -12,7 +12,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId, apiUrl }) => {
     useEffect(() => {
         const getPreviewPhotos = () => {
             axios.get(`${apiUrl}/albums/${albumId}/photos`)
-                .then(response => setPreviewPhotos(response.data))
+                .then(({ data }) => setPreviewPhotos(data))
                 .catch(() => checkErrorsFromAPI())
         };
         getPreviewPhotos();
@@ -24,8 +24,8 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId, apiUrl }) => {
                 <p>{title}</p>
             </AlbumNameWrapper>
             <section>
-                {previewPhotos.slice(0, previewPhotosNum).map((photo) => 
-                    <img key={photo.id} src={photo.thumbnailUrl} alt={photo.title} />
+                {previewPhotos.slice(0, previewPhotosNum).map(({ id, thumbnailUrl, title }) => 
+                    <img key={id} src={thumbnailUrl} alt={title} />
                 )} 
             </section>
             <BtnWrapper>

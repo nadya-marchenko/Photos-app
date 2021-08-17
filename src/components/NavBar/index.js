@@ -23,7 +23,7 @@ const NavBar = () => {
             <NavWrapper>
                 <ul>
                     {nav.map(({ label, icon, id, link }) =>
-                        <NavItem key={id} label={label} icon={icon} link={link}  />
+                        <NavItem key={id} label={label} icon={icon} link={link} />
                     )}
                 </ul>
             </NavWrapper>

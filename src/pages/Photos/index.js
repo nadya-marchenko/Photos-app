@@ -30,15 +30,13 @@ const Photos = ({ apiUrl, match }) => {
     useEffect(() => {
         const getPhoto = () => {
             axios.get(API_URL_PHOTOS)
-                .then(response => {
-                    setPhotos(getFilteredPhotos(response.data, filteredValue))
-                })
+                .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
                 .catch(() => {
                     setIsError(true);
                     checkErrorsFromAPI();
                 })
                 .finally(() => setIsLoading(false));
-        } 
+        };
         setIsLoading(true);
         getPhoto();
     }, [API_URL_PHOTOS, filteredValue]);

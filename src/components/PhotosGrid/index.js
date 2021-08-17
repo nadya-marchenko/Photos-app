@@ -31,12 +31,12 @@ const PhotosGrid = ({ photos, cardsPerPage, currentPage }) => {
                     handleCloseModal={closeModal}
                 />}
             {photosShowed.length
-                ? photosShowed.map(image =>
+                ? photosShowed.map(({ id, thumbnailUrl, title }) =>
                     <Card
-                        key={image.id} 
-                        id={image.id} 
-                        url={image.thumbnailUrl} 
-                        title={image.title} 
+                        key={id} 
+                        id={id} 
+                        url={thumbnailUrl} 
+                        title={title} 
                         col='4'
                         handleZoom={openModal}
                     />

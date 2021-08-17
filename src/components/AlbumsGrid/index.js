@@ -14,13 +14,13 @@ const AlbumsGrid = ({ photos, cardsPerPage, currentPage, albumId, apiUrl }) => {
     return (
         <Grid col='3'>
             {photosShowed.length
-                ? photosShowed.map(image =>
+                ? photosShowed.map(({ id, title }) =>
                     <AlbumCard
-                        key={image.id} 
+                        key={id} 
                         link={`/profile/${albumId}/photos`} 
-                        title={image.title}
+                        title={title}
                         previewPhotosNum={3}
-                        albumId={image.id}
+                        albumId={id}
                         apiUrl={apiUrl}
                     />)
                 : <NoResult message='No results. Please, try again' />}

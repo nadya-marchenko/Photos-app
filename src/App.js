@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import NotFound from './components/NotFound';
+import { API_URL } from './global/app-config-constants';
 import Albums from './pages/Albums';
 import Photos from './pages/Photos';
-
-const API_URL = `https://jsonplaceholder.typicode.com`;
 
 const App = () => 
   <BrowserRouter>
