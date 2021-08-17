@@ -33,27 +33,29 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
 
     return(
         <PaginationContainer>
-            <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
-                <ArrowBackIosIcon />
-            </IconArrow>
-                {showedPages.map(page => 
-                    <PaginationElement 
-                        key={page} 
-                        page={page} 
-                        isActive={page === activePage}
-                        handlePageNum={changeCurrentPage}
-                    />
-                )}
-            {isShowDots && <span>...</span>}
-            <PaginationElement 
-                        key={pageNum} 
-                        page={pageNum} 
-                        isActive={pageNum === activePage}
-                        handlePageNum={changeCurrentPage}
-                    />
-            <IconArrow isDisable={activePage === pageNum} onClick={handleRightArrow}>
-                <ArrowForwardIosIcon />
-            </IconArrow>
+            {pageNum > 1 && <>
+                <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
+                    <ArrowBackIosIcon />
+                </IconArrow>
+                    {showedPages.map(page => 
+                        <PaginationElement 
+                            key={page} 
+                            page={page} 
+                            isActive={page === activePage}
+                            handlePageNum={changeCurrentPage}
+                        />
+                    )}
+                {isShowDots && <span>...</span>}
+                <PaginationElement 
+                            key={pageNum} 
+                            page={pageNum} 
+                            isActive={pageNum === activePage}
+                            handlePageNum={changeCurrentPage}
+                        />
+                <IconArrow isDisable={activePage === pageNum} onClick={handleRightArrow}>
+                    <ArrowForwardIosIcon />
+                </IconArrow>
+            </>}
             <Select
                 label='Per page' 
                 id='Page' 

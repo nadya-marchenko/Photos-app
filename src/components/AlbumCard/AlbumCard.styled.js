@@ -18,14 +18,13 @@ export const AlbumCardWrapper = styled.article`
     & section {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 15px;
-        padding: 12px 7px;
+        padding: 12px 7px 20px 7px;
     }
 `;
 
 export const AlbumNameWrapper = styled.div`
     text-align: center;
-    padding: 0 23px;
+    padding: 0 34px;
     border-bottom: 1px ${colors.default} solid;
     font-size: 15px;
     text-transform: uppercase;
