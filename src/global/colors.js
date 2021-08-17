@@ -3,5 +3,6 @@ export const colors = {
     default: '#e0e0e0',
     bgColor: '#ffffff',
     textColor: '#000000',
-    formBorderColor: '#827b7bcf'
+    formBorderColor: '#827b7bcf',
+    darkBg: 'rgba(0,0,0,0.9)',
 }
