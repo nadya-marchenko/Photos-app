@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { colors } from "../../global/colors";
 
 export const AlbumCardWrapper = styled.article`
-    height: 246px;
+    height: 235px;
     width: 300px;
     background-color: ${colors.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
+    margin: 16px;
 
     & img {
         width: 90px;
@@ -17,21 +18,26 @@ export const AlbumCardWrapper = styled.article`
     & section {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 30px;
-        padding: 4px 7px;
+        margin-bottom: 15px;
+        padding: 12px 7px;
     }
 `;
 
 export const AlbumNameWrapper = styled.div`
     text-align: center;
-    padding: 3px 20px 6px 20px;
+    padding: 0 23px;
     border-bottom: 1px ${colors.default} solid;
-    margin-bottom: 13px;
     font-size: 15px;
     text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 
     & p {
         margin: 10px 0;
+        line-height: 3;
     }
 `;
 
