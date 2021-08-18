@@ -30,6 +30,12 @@ export const NavWrapper = styled.nav`
         margin: 0;
     }
 
+    svg {
+        &.MuiSvgIcon-root {
+            vertical-align: middle;
+        }
+    }
+
     @media screen and (max-width: ${deviceSizes.phone}) {
         font-size: 12px;
         margin: 0;

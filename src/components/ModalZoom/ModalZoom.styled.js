@@ -21,8 +21,8 @@ export const ModalWrapper = styled.section`
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: ${colors.textColor};
-    background-color: ${colors.darkBg};
+    background-color: ${colors.black};
+    background-color: ${colors.dark};
 `;
 
 export const ModalImg = styled.img`
@@ -41,7 +41,7 @@ export const CloseBtn = styled.span`
     position: absolute;
     top: 15px;
     right: 35px;
-    color: ${colors.bgColor};
+    color: ${colors.white};
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
@@ -60,7 +60,7 @@ export const ModalCaption = styled.p`
     width: 80%;
     max-width: 700px;
     text-align: center;
-    color: ${colors.bgColor};
+    color: ${colors.white};
     padding: 10px 0;
     height: 150px;
     text-transform: capitalize;

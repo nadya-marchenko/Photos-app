@@ -5,7 +5,7 @@ import { deviceSizes } from "../../../global/device-sizes";
 export const NavContainer = styled.li`
     & a {
         font-size: .85em;
-        color: ${colors.textColor};
+        color: ${colors.black};
         text-align: center;
         text-transform: uppercase;
         text-decoration: none;
@@ -16,7 +16,7 @@ export const NavContainer = styled.li`
 
     & a:hover,
     & .active {
-        color: #${colors.bgColor};
+        color: #${colors.white};
         background: ${colors.primary};
     }
 `;

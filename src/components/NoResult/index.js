@@ -5,7 +5,7 @@ import WarningIcon from '@material-ui/icons/Warning';
 
 const NoResult = ({ message }) => 
     <MessageWrapper>
-        <WarningIcon style={{ verticalAlign: 'middle' }} />
+        <WarningIcon />
         <span>{message}</span>
     </MessageWrapper>;
 

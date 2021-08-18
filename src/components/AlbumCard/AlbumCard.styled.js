@@ -4,7 +4,7 @@ import { colors } from "../../global/colors";
 export const AlbumCardWrapper = styled.article`
     height: 246px;
     width: 300px;
-    background-color: ${colors.bgColor};
+    background-color: ${colors.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 
@@ -45,6 +45,11 @@ export const BtnWrapper = styled.div`
 
     & button {
         pudding-top: 4px;
-        //  9px 28px 12px;
+    }
+
+    svg {
+        &.MuiSvgIcon-root {
+            vertical-align: middle;
+        }
     }
 `;

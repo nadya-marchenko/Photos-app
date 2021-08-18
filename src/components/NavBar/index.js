@@ -8,9 +8,9 @@ import NavItem from './NavItem';
 
 const NavBar = () => {
     const nav = [
-        { label: 'Photos', icon: <PhotoIcon style={{ verticalAlign: 'middle' }} />, id: 1 },
-        { label: 'Albums', icon: <PhotoAlbumIcon style={{ verticalAlign: 'middle' }} />, id: 2 },
-        { label: 'Profile', icon: <AccountCircleIcon style={{ verticalAlign: 'middle' }} />, id: 3 },
+        { label: 'Photos', icon: <PhotoIcon />, id: 1 },
+        { label: 'Albums', icon: <PhotoAlbumIcon />, id: 2 },
+        { label: 'Profile', icon: <AccountCircleIcon />, id: 3 },
     ];
 
     return (
