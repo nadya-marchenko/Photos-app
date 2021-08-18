@@ -14,7 +14,7 @@ const App = () =>
       <Switch>
         <Route path="/profile/:album/photos" render={({match}) => <Photos apiUrl={API_URL} match={match} />} />
         <Route path='/profile/:user/albums' render={({match}) => <Albums apiUrl={API_URL} match={match} />} />
-        <Route exact path='/profile' component={Profile} />
+        <Route exact path='/profile/:user' component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>;
