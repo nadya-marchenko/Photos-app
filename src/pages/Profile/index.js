@@ -15,16 +15,18 @@ const Profile = ({ match }) => {
 
     const user = Number(match.params.user);
 
+    const API_URL_USERS = `${API_URL}/users`;
+
     useEffect(() => {
         const getData = () => {
-            axios.get(`${API_URL}/users`)
+            axios.get(API_URL_USERS)
                 .then(({ data }) => setProfileData(...data.filter(({ id }) => id === user)))
                 .catch(() => checkErrorsFromAPI())
                 .finally(() => setIsLoading(false));
         };
         setIsLoading(true);
         getData();
-    }, [user]);
+    }, [API_URL_USERS, user]);
     
     return (
         <>
@@ -42,8 +44,8 @@ const Profile = ({ match }) => {
                         profileData={profileData}
                 />)}
             </ProfileWrapper>
-            </>
-            );
+        </>
+    );
 }
 
 export default Profile;

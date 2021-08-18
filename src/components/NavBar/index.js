@@ -14,7 +14,7 @@ const NavBar = () => {
     const nav = [
         { label: 'Photos', icon: <PhotoIcon />, id: 1, link: '/profile/1/photos' },
         { label: 'Albums', icon: <PhotoAlbumIcon />, id: 2, link: `/profile/${currentUser}/albums` },
-        { label: 'Profile', icon: <AccountCircleIcon />, id: 3, link: '/profile' },
+        { label: 'Profile', icon: <AccountCircleIcon />, id: 3, link: `/profile/${currentUser}/user` },
     ];
 
     return (

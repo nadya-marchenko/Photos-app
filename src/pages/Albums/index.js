@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { PageHeadline, PhotoHeadContainer } from './Albums.styled';
 import Pagination from '../../components/Pagination';
-import PropTypes from 'prop-types';
 import NoResult from '../../components/NoResult';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import Search from '../../components/Search';
 import WithLoading from '../../components/WithLoading';
 import AlbumsGrid from '../../components/AlbumsGrid';
+import { API_URL } from '../../global/app-config-constants';
 
 const AlbumsGridWithLoading = WithLoading(AlbumsGrid);
 
-const Albums = ({ apiUrl, match }) => {
+const Albums = ({ match }) => {
     const user = match.params.user;
-    const API_URL_ALBUMS = `${apiUrl}/users/${user}/albums`;
+    const API_URL_ALBUMS = `${API_URL}/users/${user}/albums`;
 
     const [photos, setPhotos] = useState([]);
     const [filteredValue, setFilteredValue] = useState('');
@@ -27,17 +27,14 @@ const Albums = ({ apiUrl, match }) => {
     const filterImages = (newFilteredValue) => setFilteredValue(newFilteredValue);
 
     useEffect(() => {
-        const getPhoto = () => {
+        const getPhoto = () => 
             axios.get(API_URL_ALBUMS)
-                .then(response => {
-                    setPhotos(getFilteredPhotos(response.data, filteredValue))
-                })
+                .then(response => setPhotos(getFilteredPhotos(response.data, filteredValue)))
                 .catch(() => {
                     setIsError(true);
                     checkErrorsFromAPI();
                 })
                 .finally(() => setIsLoading(false));
-        } 
         setIsLoading(true);
         getPhoto();
     }, [API_URL_ALBUMS, filteredValue]);
@@ -70,9 +67,7 @@ const Albums = ({ apiUrl, match }) => {
                     isLoading={isLoading} 
                     photos={photos} 
                     cardsPerPage={cardsPerPage} 
-                    currentPage={currentPage} 
-                    apiUrl={apiUrl}
-                    albumId={user}
+                    currentPage={currentPage}
                     />}
             <Pagination 
                 activePage={currentPage} 
@@ -85,10 +80,6 @@ const Albums = ({ apiUrl, match }) => {
             />
         </>
     );
-};
-
-Albums.propTypes = {
-    apiUrl: PropTypes.string.isRequired,
 };
 
 export default Albums;

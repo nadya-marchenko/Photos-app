@@ -5,18 +5,19 @@ import { AlbumCardWrapper, AlbumNameWrapper, BtnLabel, BtnWrapper } from './Albu
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
+import { API_URL } from '../../global/app-config-constants';
 
-const AlbumCard = ({ link, title, previewPhotosNum, albumId, apiUrl }) => {
+const AlbumCard = ({ link, title, previewPhotosNum, albumId }) => {
     const [ previewPhotos, setPreviewPhotos ] = useState([]);
 
     useEffect(() => {
         const getPreviewPhotos = () => {
-            axios.get(`${apiUrl}/albums/${albumId}/photos`)
+            axios.get(`${API_URL}/albums/${albumId}/photos`)
                 .then(({ data }) => setPreviewPhotos(data))
                 .catch(() => checkErrorsFromAPI())
         };
         getPreviewPhotos();
-    }, [albumId, apiUrl]);
+    }, [albumId]);
 
     return (
         <AlbumCardWrapper>
@@ -43,7 +44,6 @@ AlbumCard.propTypes = {
     title: PropTypes.string.isRequired,
     previewPhotosNum: PropTypes.number.isRequired,
     albumId: PropTypes.number.isRequired,
-    apiUrl: PropTypes.string.isRequired,
 }
 
 export default AlbumCard;
