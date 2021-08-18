@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { deviceSizes } from "../../global/device-sizes";
+import { GridLayoutProps } from "./Grid";
 
-export const GridLayout = styled.section`
-    width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 70 : 60}%;
+export const GridLayout = styled.section<GridLayoutProps>`
+    width: ${({ maxColumnCount }) => Number(maxColumnCount) < 4 ? 70 : 60}%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -10,10 +11,10 @@ export const GridLayout = styled.section`
     align-items: center;
 
     @media screen and (max-width: ${deviceSizes.desktop}) {
-        width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 90 : 80}%;
+        width: ${({ maxColumnCount }) => Number(maxColumnCount) < 4 ? 90 : 80}%;
     }
 
     @media screen and (max-width: ${deviceSizes.tablets}) {
-        width: ${({ maxColumnCount }) => maxColumnCount < 4 ? 50 : 90}%;
+        width: ${({ maxColumnCount }) => Number(maxColumnCount) < 4 ? 50 : 90}%;
     }
 `;

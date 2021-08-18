@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { InputIcon, InputWrapper, TextFieldSet } from './Input.styled';
+import { InputConfig } from './Input';
 
-const Input = ({ type, label, id, icon, onChangeHandler, value, defaultValue }) => 
+const Input = ({ type, label, id, icon, onChangeHandler, value, defaultValue }: InputConfig) => 
     <InputWrapper type={type}>
         {type === 'search' && <InputIcon>{icon}</InputIcon>}
         <input type={type} id={id} value={value} onChange={onChangeHandler} defaultValue={defaultValue} />
@@ -12,15 +12,5 @@ const Input = ({ type, label, id, icon, onChangeHandler, value, defaultValue }) 
             </legend>
         </TextFieldSet>
     </InputWrapper>;
-
-Input.propTypes = {
-    type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
-    onChangeHandler: PropTypes.func,
-    value: PropTypes.string,
-    defaultValue: PropTypes.string,
-};
 
 export default Input;

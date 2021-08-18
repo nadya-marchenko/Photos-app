@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CloseBtn, ModalImg, ModalCaption, ModalWrapper } from './ModalZoom.styled';
+import { ModalZoomConfig } from './ModalZoom';
 
-const ModalZoom = ({ largeImg, title, handleCloseModal }) => 
+const ModalZoom = ({ largeImg, title, handleCloseModal }: ModalZoomConfig) => 
     <ModalWrapper>
         <CloseBtn 
             onClick={handleCloseModal}
@@ -12,11 +12,5 @@ const ModalZoom = ({ largeImg, title, handleCloseModal }) =>
         <ModalImg src={largeImg} alt={title} />
         <ModalCaption>{title}</ModalCaption>
     </ModalWrapper>;
-
-ModalZoom.propType = {
-    largeImg: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    handleCloseModal: PropTypes.func.isRequired
-}
 
 export default ModalZoom;

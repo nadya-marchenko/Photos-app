@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import Button from '../Button';
 import { AlbumCardWrapper, AlbumNameWrapper, BtnLabel, BtnWrapper } from './AlbumCard.styled';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import { API_URL } from '../../global/app-config-constants';
+import { AlbumValues, PreviewPhotosConfig } from './AlbumCard';
 
-const AlbumCard = ({ link, title, previewPhotosNum, albumId }) => {
-    const [ previewPhotos, setPreviewPhotos ] = useState([]);
+const AlbumCard = ({ link, title, previewPhotosNum, albumId } : AlbumValues) => {
+    const [ previewPhotos, setPreviewPhotos ] = React.useState<PreviewPhotosConfig[]>([]);
 
     useEffect(() => {
         const getPreviewPhotos = () => {
-            axios.get(`${API_URL}/albums/${albumId}/photos`)
+            axios.get<PreviewPhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
                 .then(({ data }) => setPreviewPhotos(data))
                 .catch(() => checkErrorsFromAPI())
         };
@@ -25,7 +25,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId }) => {
                 <p>{title}</p>
             </AlbumNameWrapper>
             <section>
-                {previewPhotos.slice(0, previewPhotosNum).map(({ id, thumbnailUrl, title }) => 
+                {previewPhotos.slice(0, previewPhotosNum).map(({ id, thumbnailUrl, title } : PreviewPhotosConfig) => 
                     <img key={id} src={thumbnailUrl} alt={title} />
                 )} 
             </section>
@@ -38,12 +38,5 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId }) => {
         </AlbumCardWrapper>
     );
 };
-
-AlbumCard.propTypes = {
-    link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    previewPhotosNum: PropTypes.number.isRequired,
-    albumId: PropTypes.number.isRequired,
-}
 
 export default AlbumCard;

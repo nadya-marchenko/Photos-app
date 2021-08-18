@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
+import { InputWrapperProps } from './Input';
 
-export const InputWrapper = styled.article`
+export const InputWrapper = styled.article<InputWrapperProps>`
     height: 37px;
     border-radius: 4px;
     position: relative;
