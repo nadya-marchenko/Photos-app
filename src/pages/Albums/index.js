@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { PageHeadline, PhotoHeadContainer } from './Photos.styled';
+import { PageHeadline, PhotoHeadContainer } from './Albums.styled';
 import Pagination from '../../components/Pagination';
 import PropTypes from 'prop-types';
 import NoResult from '../../components/NoResult';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import Search from '../../components/Search';
-import PhotosGrid from '../../components/PhotosGrid';
 import WithLoading from '../../components/WithLoading';
+import AlbumsGrid from '../../components/AlbumsGrid';
 
-const PhotosGridWithLoading = WithLoading(PhotosGrid);
+const AlbumsGridWithLoading = WithLoading(AlbumsGrid);
 
-
-const Photos = ({ apiUrl, match }) => {
-    const album = match.params.album;
-    const API_URL_PHOTOS = `${apiUrl}/albums/${album}/photos`;
+const Albums = ({ apiUrl, match }) => {
+    const user = match.params.user;
+    const API_URL_ALBUMS = `${apiUrl}/users/${user}/albums`;
 
     const [photos, setPhotos] = useState([]);
     const [filteredValue, setFilteredValue] = useState('');
@@ -29,17 +28,19 @@ const Photos = ({ apiUrl, match }) => {
 
     useEffect(() => {
         const getPhoto = () => {
-            axios.get(API_URL_PHOTOS)
-                .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
+            axios.get(API_URL_ALBUMS)
+                .then(response => {
+                    setPhotos(getFilteredPhotos(response.data, filteredValue))
+                })
                 .catch(() => {
                     setIsError(true);
                     checkErrorsFromAPI();
                 })
                 .finally(() => setIsLoading(false));
-        };
+        } 
         setIsLoading(true);
         getPhoto();
-    }, [API_URL_PHOTOS, filteredValue]);
+    }, [API_URL_ALBUMS, filteredValue]);
 
     const getFilteredPhotos = (photos, filteredValue) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
@@ -60,33 +61,34 @@ const Photos = ({ apiUrl, match }) => {
     return (
         <>
             <PhotoHeadContainer>
-                <PageHeadline>Your photos</PageHeadline>
+                <PageHeadline>Your albums</PageHeadline>
                 <Search filterImages={filterImages} />
             </PhotoHeadContainer>
             {isError 
                 ? <NoResult message='Problems with API. Please try again' />
-                : <PhotosGridWithLoading 
+                : <AlbumsGridWithLoading 
                     isLoading={isLoading} 
                     photos={photos} 
                     cardsPerPage={cardsPerPage} 
                     currentPage={currentPage} 
+                    apiUrl={apiUrl}
+                    albumId={user}
                     />}
-            {photos.length > 10 
-                && <Pagination 
-                    activePage={currentPage} 
-                    pageNum={pageNum} 
-                    showedAmount={5} 
-                    changeCurrentPage={changeCurrentPage}
-                    changePerPageValue={changePerPageValue}
-                    handleLeftArrow={() => changeCurrentPage(currentPage - 1)}
-                    handleRightArrow={() => changeCurrentPage(currentPage + 1)}
-                />}
+            <Pagination 
+                activePage={currentPage} 
+                pageNum={pageNum} 
+                showedAmount={5} 
+                changeCurrentPage={changeCurrentPage}
+                changePerPageValue={changePerPageValue}
+                handleLeftArrow={() => changeCurrentPage(currentPage - 1)}
+                handleRightArrow={() => changeCurrentPage(currentPage + 1)}
+            />
         </>
     );
 };
 
-Photos.propTypes = {
+Albums.propTypes = {
     apiUrl: PropTypes.string.isRequired,
-}
+};
 
-export default Photos;
+export default Albums;

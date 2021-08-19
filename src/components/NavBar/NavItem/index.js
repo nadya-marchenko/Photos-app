@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { NavContainer, NavItemLabel } from './NavItem.styled';
 
 
-const NavItem = ({ label, icon}) => 
+const NavItem = ({ label, icon, link }) => 
     <NavContainer>
-        <NavLink to='/profile/1/photos'>
+        <NavLink to={link}>
             {icon} 
             <NavItemLabel>{label}</NavItemLabel>
         </NavLink>
@@ -15,6 +15,7 @@ const NavItem = ({ label, icon}) =>
 NavItem.propTypes = {
     label: PropTypes.string.isRequired,
     icon: PropTypes.any,
+    link: PropTypes.string,
 }
 
 export default NavItem;

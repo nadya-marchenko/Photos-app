@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import PaginationElement from './PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
-
-const perPageVariants = [7, 10, 20, 30, 40, 60];
+import { perPageOptions } from '../../global/app-config-constants';
 
 const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }) => {
     const getElements = () => getFilledArray(pageNum - 1);
@@ -33,31 +32,33 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
 
     return(
         <PaginationContainer>
-            <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
-                <ArrowBackIosIcon />
-            </IconArrow>
-                {showedPages.map(page => 
-                    <PaginationElement 
-                        key={page} 
-                        page={page} 
-                        isActive={page === activePage}
-                        handlePageNum={changeCurrentPage}
-                    />
-                )}
-            {isShowDots && <span>...</span>}
-            <PaginationElement 
-                        key={pageNum} 
-                        page={pageNum} 
-                        isActive={pageNum === activePage}
-                        handlePageNum={changeCurrentPage}
-                    />
-            <IconArrow isDisable={activePage === pageNum} onClick={handleRightArrow}>
-                <ArrowForwardIosIcon />
-            </IconArrow>
+            {pageNum > 1 && <>
+                <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
+                    <ArrowBackIosIcon />
+                </IconArrow>
+                    {showedPages.map(page => 
+                        <PaginationElement 
+                            key={page} 
+                            page={page} 
+                            isActive={page === activePage}
+                            handlePageNum={changeCurrentPage}
+                        />
+                    )}
+                {isShowDots && <span>...</span>}
+                <PaginationElement 
+                            key={pageNum} 
+                            page={pageNum} 
+                            isActive={pageNum === activePage}
+                            handlePageNum={changeCurrentPage}
+                        />
+                <IconArrow isDisable={activePage === pageNum} onClick={handleRightArrow}>
+                    <ArrowForwardIosIcon />
+                </IconArrow>
+            </>}
             <Select
                 label='Per page' 
                 id='Page' 
-                options={perPageVariants}
+                options={perPageOptions}
                 handleSettingPerPageValue={changePerPageValue}
             />
         </PaginationContainer>

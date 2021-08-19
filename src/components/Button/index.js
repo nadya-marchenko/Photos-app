@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BtnWrapper } from './Button.styled';
+import { BtnWrapper, LinkWrapper } from './Button.styled';
 
-const Button = ({ children, color, link, type }) =>
-    <BtnWrapper type={type} color={color} href={link}>
-        {children}
-    </BtnWrapper>;
+const Button = ({ children, color, link, type }) => {
+    return(
+        link 
+            ? <LinkWrapper href={link} color={color}>
+                {children}
+            </LinkWrapper>
+            : <BtnWrapper type={type} color={color}>
+                {children}
+            </BtnWrapper>
+    );
+};
 
 Button.propTypes = {
     color: PropTypes.string,
