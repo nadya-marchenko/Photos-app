@@ -2,33 +2,33 @@ import React from 'react';
 import Select from '../Select';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import PropTypes from 'prop-types';
 import PaginationElement from './PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
 import { perPageOptions } from '../../global/app-config-constants';
+import { PaginationConfig } from './Pagination';
 
-const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }) => {
-    const getElements = () => getFilledArray(pageNum - 1);
+const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }: PaginationConfig) => {
+    const getElements: () => number[] = () => getFilledArray(pageNum - 1);
 
-    const allPagesWithoutLast = getElements();
+    const allPagesWithoutLast: number[] = getElements();
 
-    const middleOfShowedPages = Math.floor(showedAmount / 2); 
-    const firstIndexShowedPage = activePage > middleOfShowedPages 
+    const middleOfShowedPages: number = Math.floor(showedAmount / 2); 
+    const firstIndexShowedPage: number = activePage > middleOfShowedPages 
         ?  activePage - middleOfShowedPages
         : 0;
-    const lastIndexShowedPage = firstIndexShowedPage + showedAmount;
+    const lastIndexShowedPage: number = firstIndexShowedPage + showedAmount;
 
-    const getShowedPages = () => {
+    const getShowedPages: () => number[] = () => {
         const checkedPages = allPagesWithoutLast.slice(firstIndexShowedPage, lastIndexShowedPage);
         return checkedPages.length < showedAmount
             ? allPagesWithoutLast.slice(-showedAmount + 1)
             : checkedPages;
     };
 
-    const showedPages = getShowedPages();
+    const showedPages: number[] = getShowedPages();
 
-    const isShowDots = !showedPages.includes(pageNum - 1);
+    const isShowDots: boolean = !showedPages.includes(pageNum - 1);
 
     return(
         <PaginationContainer>
@@ -36,7 +36,7 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
                 <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
                     <ArrowBackIosIcon />
                 </IconArrow>
-                    {showedPages.map(page => 
+                    {showedPages.map((page: number) => 
                         <PaginationElement 
                             key={page} 
                             page={page} 
@@ -63,15 +63,6 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
             />
         </PaginationContainer>
     );
-}
-
-Pagination.propTypes = {
-    activePage: PropTypes.number.isRequired,
-    pageNum: PropTypes.number.isRequired,
-    changeCurrentPage: PropTypes.func.isRequired,
-    changePerPageValue: PropTypes.func.isRequired,
-    handleLeftArrow: PropTypes.func.isRequired,
-    handleRightArrow: PropTypes.func.isRequired
-}
+};
 
 export default Pagination;

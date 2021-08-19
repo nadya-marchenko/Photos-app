@@ -1,6 +1,6 @@
 import { PreviewPhotosConfig } from "../AlbumCard/AlbumCard";
 
-export interface AlbumGridValues {
+export interface PhotosGridConfig {
     photos: PreviewPhotosConfig[];
     cardsPerPage: number;
     currentPage: number;

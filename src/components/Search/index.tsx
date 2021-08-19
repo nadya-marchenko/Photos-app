@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Button from '../Button';
 import Input from '../Input';
 import SearchIcon from '@material-ui/icons/Search';
 import { SearchRow } from './Search.styled';
+import { SearchConfig } from './Search';
 
-const Search = ({ filterImages }) => {
-    const [inputValue, setInputValue] = useState('');
+const Search = ({ filterImages }: SearchConfig) => {
+    const [inputValue, setInputValue] = useState<string>('');
 
-    const handleInput = e => setInputValue(e.target.value);
+    const handleInput = (e: { target: { value: React.SetStateAction<string>; }; }) => setInputValue(e.target.value);
 
-    const handleSearchBtn = (e) => {
+    const handleSearchBtn = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         filterImages(inputValue);
     };
@@ -33,10 +33,6 @@ const Search = ({ filterImages }) => {
             </Button>
         </SearchRow>
     );
-};
-
-Search.propTypes = {
-    filterImages: PropTypes.func.isRequired,
 };
 
 export default Search;

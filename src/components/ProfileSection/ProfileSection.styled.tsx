@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
 import { deviceSizes } from '../../global/device-sizes';
+import { InputsWrapperProps } from '../../components/ProfileSection/ProfileSection';
 
 export const SectionWrapper = styled.section`
     svg {
@@ -29,7 +30,7 @@ export const HeaderWrapper = styled.div`
     }
 `;
 
-export const InputsWrapper = styled.div`
+export const InputsWrapper = styled.div<InputsWrapperProps>`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

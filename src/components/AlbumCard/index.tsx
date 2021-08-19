@@ -14,7 +14,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId } : AlbumValues) => 
         const getPreviewPhotos = () => {
             axios.get<PreviewPhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
                 .then(({ data }) => setPreviewPhotos(data))
-                .catch(() => checkErrorsFromAPI())
+                .catch(({ data }) => checkErrorsFromAPI(data))
         };
         getPreviewPhotos();
     }, [albumId]);
