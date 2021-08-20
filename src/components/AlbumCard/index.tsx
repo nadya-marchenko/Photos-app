@@ -5,14 +5,15 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import { API_URL } from '../../global/app-config-constants';
-import { AlbumValues, PreviewPhotosConfig } from './AlbumCard';
+import { AlbumValues } from './AlbumCard';
+import { PhotosConfig } from '../../pages/Photos/Photos';
 
 const AlbumCard = ({ link, title, previewPhotosNum, albumId } : AlbumValues) => {
-    const [ previewPhotos, setPreviewPhotos ] = React.useState<PreviewPhotosConfig[]>([]);
+    const [ previewPhotos, setPreviewPhotos ] = React.useState<PhotosConfig[]>([]);
 
     useEffect(() => {
         const getPreviewPhotos = () => {
-            axios.get<PreviewPhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
+            axios.get<PhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
                 .then(({ data }) => setPreviewPhotos(data))
                 .catch(({ data }) => checkErrorsFromAPI(data))
         };
@@ -25,7 +26,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId } : AlbumValues) => 
                 <p>{title}</p>
             </AlbumNameWrapper>
             <section>
-                {previewPhotos.slice(0, previewPhotosNum).map(({ id, thumbnailUrl, title } : PreviewPhotosConfig) => 
+                {previewPhotos.slice(0, previewPhotosNum).map(({ id, thumbnailUrl, title } : PhotosConfig) => 
                     <img key={id} src={thumbnailUrl} alt={title} />
                 )} 
             </section>

@@ -1,7 +1,6 @@
-import { PreviewPhotosConfig } from "../AlbumCard/AlbumCard";
-
+import { PhotosConfig } from "../../pages/Photos/Photos";
 export interface PhotosGridConfig {
-    photos: PreviewPhotosConfig[];
+    photos: PhotosConfig[];
     cardsPerPage: number;
     currentPage: number;
 }

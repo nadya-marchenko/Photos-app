@@ -8,8 +8,8 @@ import Search from '../../components/Search';
 import PhotosGrid from '../../components/PhotosGrid';
 import WithLoading from '../../components/WithLoading';
 import { API_URL } from '../../global/app-config-constants';
-import { PreviewPhotosConfig } from '../../components/AlbumCard/AlbumCard';
 import { useParams } from 'react-router-dom';
+import { PhotosConfig } from './Photos';
 
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
@@ -19,7 +19,7 @@ const Photos = () => {
     
     const API_URL_PHOTOS: string = `${API_URL}/albums/${album}/photos`;
 
-    const [photos, setPhotos] = React.useState<PreviewPhotosConfig[]>([]);
+    const [photos, setPhotos] = React.useState<PhotosConfig[]>([]);
     const [filteredValue, setFilteredValue] = React.useState<string>('');
     const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -30,11 +30,11 @@ const Photos = () => {
 
     const filterImages = (newFilteredValue: React.SetStateAction<string>) => setFilteredValue(newFilteredValue);
 
-    const getFilteredPhotos = (photos: PreviewPhotosConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
+    const getFilteredPhotos = (photos: PhotosConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
     useEffect(() => {
         const getPhoto = () => {
-            axios.get<PreviewPhotosConfig[]>(API_URL_PHOTOS)
+            axios.get<PhotosConfig[]>(API_URL_PHOTOS)
                 .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
                 .catch(({ data }) => {
                     setIsError(true);
