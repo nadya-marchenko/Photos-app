@@ -6,11 +6,11 @@ import { Header, Logo, NavWrapper } from './NavBar.styled';
 import NavItem from './NavItem';
 import { useLocation } from 'react-router';
 import { NavItemConfig } from './NavItem/NavItem';
+import { LocationState } from './NavBar';
 
 
 const NavBar = () => {
-    const currentUrl = useLocation();
-    const currentUser = currentUrl.pathname.match(/\d+/g);
+    const currentUser : RegExpMatchArray|null = useLocation<LocationState>().pathname.match(/\d+/g);
 
     const nav: NavItemConfig[] = [
         { label: 'Photos', icon: <PhotoIcon />, id: 1, link: '/profile/1/photos' },

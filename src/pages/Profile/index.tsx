@@ -6,22 +6,24 @@ import axios from 'axios';
 import { API_URL } from '../../global/app-config-constants';
 import { checkErrorsFromAPI } from '../../utils';
 import WithLoading from '../../components/WithLoading';
-import { ProfileDataConfig, ProfileSectionConfig } from '../../components/ProfileSection/ProfileSection';
+import { ProfileDataConfig } from '../../components/ProfileSection/ProfileSection';
+import { useParams } from 'react-router-dom';
+import { ProfileConfigProps } from './Profile';
 
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
-const Profile = ({ match }) => {
-    const [ profileData, setProfileData ] = React.useState<ProfileDataConfig[]>([]);
+const Profile = () => {
+    const [ profileData, setProfileData ] = React.useState<Map<string, ProfileDataConfig>>(new Map());
     const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
 
-    const user: number = Number(match.params.user);
+    const { user } = useParams<Record<string, string | undefined>>();
 
     const API_URL_USERS: string = `${API_URL}/users`;
 
     useEffect(() => {
         const getData = () => {
             axios.get(API_URL_USERS)
-                .then(({ data }) => setProfileData([...data.filter(({ id }) => id === user)]))
+                .then(({ data }) => setProfileData(new Map([...data.filter(({ id }: {id: string}) => id === user)])))
                 .catch(({ data }) => checkErrorsFromAPI(data))
                 .finally(() => setIsLoading(false));
         };
@@ -33,7 +35,7 @@ const Profile = ({ match }) => {
         <>
             <PageHeadline>Your profile</PageHeadline>
             <ProfileWrapper>
-                {profileConfig.map(({ icon, title, inputNames, col, id }: ProfileSectionConfig) => 
+                {profileConfig.map(({ icon, title, inputNames, col, id }: ProfileConfigProps) => 
                     <ProfileSectionWithLoading
                         isLoading={isLoading}
                         key={id}

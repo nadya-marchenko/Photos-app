@@ -9,13 +9,15 @@ import PhotosGrid from '../../components/PhotosGrid';
 import WithLoading from '../../components/WithLoading';
 import { API_URL } from '../../global/app-config-constants';
 import { PreviewPhotosConfig } from '../../components/AlbumCard/AlbumCard';
+import { useParams } from 'react-router-dom';
 
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
 
-const Photos = ({ match }) => {
-    const album = match.params.album;
-    const API_URL_PHOTOS = `${API_URL}/albums/${album}/photos`;
+const Photos = () => {
+    const { album } = useParams<Record<string, string | undefined>>();
+    
+    const API_URL_PHOTOS: string = `${API_URL}/albums/${album}/photos`;
 
     const [photos, setPhotos] = React.useState<PreviewPhotosConfig[]>([]);
     const [filteredValue, setFilteredValue] = React.useState<string>('');
@@ -32,7 +34,7 @@ const Photos = ({ match }) => {
 
     useEffect(() => {
         const getPhoto = () => {
-            axios.get(API_URL_PHOTOS)
+            axios.get<PreviewPhotosConfig[]>(API_URL_PHOTOS)
                 .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
                 .catch(({ data }) => {
                     setIsError(true);

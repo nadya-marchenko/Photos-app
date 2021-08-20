@@ -36,7 +36,7 @@ const PhotosGrid = ({ photos, cardsPerPage, currentPage }: PhotosGridConfig) => 
             </>
             <>
                 {photosShowed.length
-                    ? photosShowed.map(({ id, thumbnailUrl, title }) =>
+                    ? photosShowed.map(({ id, thumbnailUrl, title }: PreviewPhotosConfig) =>
                         <Card
                             key={id} 
                             id={id} 

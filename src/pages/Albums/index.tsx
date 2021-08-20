@@ -9,11 +9,13 @@ import WithLoading from '../../components/WithLoading';
 import AlbumsGrid from '../../components/AlbumsGrid';
 import { API_URL } from '../../global/app-config-constants';
 import { AlbumsConfig } from './Albums';
+import { useParams } from 'react-router-dom';
 
 const AlbumsGridWithLoading = WithLoading(AlbumsGrid);
 
-const Albums = ({ match }) => {
-    const user = match.params.user;
+const Albums = () => {
+    const { user } = useParams<Record<string, string | undefined>>();
+
     const API_URL_ALBUMS = `${API_URL}/users/${user}/albums`;
 
     const [photos, setPhotos] = React.useState<AlbumsConfig[]>([]);
@@ -30,7 +32,7 @@ const Albums = ({ match }) => {
     const getFilteredPhotos = (photos: AlbumsConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
     useEffect(() => {
-        axios.get(API_URL_ALBUMS)
+        axios.get<AlbumsConfig[]>(API_URL_ALBUMS)
             .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
             .catch(({ data }) => {
                 setIsError(true);

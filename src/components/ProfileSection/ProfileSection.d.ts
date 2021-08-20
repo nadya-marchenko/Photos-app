@@ -2,10 +2,10 @@ export interface ProfileSectionConfig {
     icon: JSX.Element|JSX.Element[];
     title: string;
     inputNames: ProfileInputsConfig[];
-    col?: number;
+    col: number;
     id?: number;
     key?: number;
-    profileData: ProfileDataConfig[];
+    profileData: Map<ProfileDataConfig>;
 }
 
 export interface ProfileInputsConfig {
@@ -33,7 +33,6 @@ export interface CompanyConfig {
 }
 
 export interface ProfileDataConfig {
-    [key: string]: any;
     id: number;
     name: string;
     username: string;
@@ -45,5 +44,5 @@ export interface ProfileDataConfig {
 }
 
 export interface InputsWrapperProps {
-    col: number | undefined;
+    col: number;
 }
