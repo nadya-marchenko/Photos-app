@@ -12,12 +12,9 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId } : AlbumValues) => 
     const [ previewPhotos, setPreviewPhotos ] = React.useState<PhotosConfig[]>([]);
 
     useEffect(() => {
-        const getPreviewPhotos = () => {
-            axios.get<PhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
-                .then(({ data }) => setPreviewPhotos(data))
-                .catch(({ data }) => checkErrorsFromAPI(data))
-        };
-        getPreviewPhotos();
+        axios.get<PhotosConfig[]>(`${API_URL}/albums/${albumId}/photos`)
+            .then(({ data }) => setPreviewPhotos(data))
+            .catch(({ data }) => checkErrorsFromAPI(data));
     }, [albumId]);
 
     return (

@@ -16,7 +16,7 @@ export const NavContainer = styled.li`
 
     & a:hover,
     & .active {
-        color: #${colors.white};
+        color: ${colors.white};
         background: ${colors.primary};
     }
 `;

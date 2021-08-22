@@ -16,14 +16,12 @@ const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
 const Photos = () => {
     const { album } = useParams<Record<string, string | undefined>>();
-    
-    const API_URL_PHOTOS: string = `${API_URL}/albums/${album}/photos`;
 
     const [photos, setPhotos] = React.useState<PhotosConfig[]>([]);
     const [filteredValue, setFilteredValue] = React.useState<string>('');
     const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const [cardsPerPage, setCardsPerPage] = React.useState<number>(7);
+    const [cardsPerPage, setCardsPerPage] = React.useState<number>(12);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     
     const pageNum: number = Math.ceil(photos.length / cardsPerPage);
@@ -33,18 +31,15 @@ const Photos = () => {
     const getFilteredPhotos = (photos: PhotosConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
     useEffect(() => {
-        const getPhoto = () => {
-            axios.get<PhotosConfig[]>(API_URL_PHOTOS)
-                .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
-                .catch(({ data }) => {
-                    setIsError(true);
-                    checkErrorsFromAPI(data);
-                })
-                .finally(() => setIsLoading(false));
-        };
+        axios.get<PhotosConfig[]>(`${API_URL}/albums/${album}/photos`)
+            .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
+            .catch(({ data }) => {
+                setIsError(true);
+                checkErrorsFromAPI(data);
+            })
+            .finally(() => setIsLoading(false));
         setIsLoading(true);
-        getPhoto();
-    }, [API_URL_PHOTOS, filteredValue]);
+    }, [album, filteredValue]);
 
 
     const changeCurrentPage = (newCurrentPage: React.SetStateAction<number>) => {
@@ -84,6 +79,7 @@ const Photos = () => {
                     changePerPageValue={changePerPageValue}
                     handleLeftArrow={() => changeCurrentPage(currentPage - 1)}
                     handleRightArrow={() => changeCurrentPage(currentPage + 1)}
+                    selectFor='photos'
                 />}
         </>
     );

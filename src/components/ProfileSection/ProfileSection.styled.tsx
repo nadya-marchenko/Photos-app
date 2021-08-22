@@ -34,12 +34,16 @@ export const InputsWrapper = styled.div<InputsWrapperProps>`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 36px 35px;
+    padding: 36px 23px;
     border-bottom: 1px ${colors.default} solid;
 
     & article {
         margin: 5px;
         flex-basis: ${({ col }) => col === 1 ? 100 : (12 / col / 12) * 100 - 5}%;
+    }
+
+    & input {
+        padding-top: 13px;
     }
 
     @media screen and (max-width: ${deviceSizes.phone}) {

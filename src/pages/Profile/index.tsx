@@ -13,23 +13,23 @@ import { ProfileConfigProps } from './Profile';
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
 const Profile = () => {
-    const [ profileData, setProfileData ] = React.useState<Map<string, ProfileDataConfig>>(new Map());
+    const [ profileData, setProfileData ] = React.useState<undefined | ProfileDataConfig >();
     const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
 
     const { user } = useParams<Record<string, string | undefined>>();
 
-    const API_URL_USERS: string = `${API_URL}/users`;
+    const userNumber: number|undefined = Number(user);
 
     useEffect(() => {
-        const getData = () => {
-            axios.get(API_URL_USERS)
-                .then(({ data }) => setProfileData(new Map([...data.filter(({ id }: {id: string}) => id === user)])))
-                .catch(({ data }) => checkErrorsFromAPI(data))
-                .finally(() => setIsLoading(false));
-        };
+        axios.get(`${API_URL}/users`)
+            .then(({ data }) => {
+                const [ currentUserData ] = data.filter((el: { id: number | undefined; }) => el.id === userNumber);
+                setProfileData(currentUserData);
+            })
+            .catch(({ data }) => checkErrorsFromAPI(data))
+            .finally(() => setIsLoading(false));
         setIsLoading(true);
-        getData();
-    }, [API_URL_USERS, user]);
+    }, [user, userNumber]);
     
     return (
         <>

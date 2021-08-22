@@ -43,4 +43,5 @@ export const NavWrapper = styled.nav`
         & ul {
             padding-left: 0;
         }
+    }
 `;

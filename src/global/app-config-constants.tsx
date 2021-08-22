@@ -1,3 +1,4 @@
 export const API_URL: string = `https://jsonplaceholder.typicode.com`;
 
-export const perPageOptions: number[] = [7, 10, 20, 30, 40, 60];
+export const perPageOptionsPhotos: number[] = [12, 24, 36, 48, 64];
+export const perPageOptionsAlbums: number[] = [6, 12, 24, 36, 48];

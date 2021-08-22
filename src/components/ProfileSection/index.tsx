@@ -3,8 +3,14 @@ import Input from '../Input';
 import { HeaderWrapper, InputsWrapper, SectionWrapper } from './ProfileSection.styled';
 import { ProfileInputsConfig, ProfileSectionConfig } from './ProfileSection';
 
-const ProfileSection = ({ icon, title, inputNames, col, profileData }: ProfileSectionConfig) => 
-    <SectionWrapper>
+const ProfileSection = ({ icon, title, inputNames, col, profileData }: ProfileSectionConfig) => {
+    const getDefaultValue = (apiName: string) => {
+        if(!profileData) return '';
+        return (profileData as any)[title] ? ((profileData as any)[title])[apiName] : (profileData as any)[apiName];
+    };
+
+    return (
+        <SectionWrapper>
             <HeaderWrapper>
                 <span>{icon}</span>
                 <h2>{title}</h2>
@@ -16,9 +22,11 @@ const ProfileSection = ({ icon, title, inputNames, col, profileData }: ProfileSe
                         type={type}
                         label={name}
                         id={id}
-                        defaultValue={profileData.has(title) ? profileData.get(title).get(apiName) : profileData.get(apiName)}
+                        defaultValue={getDefaultValue(apiName)}
                     />)}
             </InputsWrapper>
-        </SectionWrapper>;
+        </SectionWrapper>
+    );
+};
 
 export default ProfileSection;

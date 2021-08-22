@@ -22,14 +22,14 @@ const Albums = () => {
     const [filteredValue, setFilteredValue] = React.useState<string>('');
     const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const [cardsPerPage, setCardsPerPage] = React.useState<number>(7);
+    const [cardsPerPage, setCardsPerPage] = React.useState<number>(6);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     
     const pageNum: number = Math.ceil(photos.length / cardsPerPage);
 
     const filterImages = (newFilteredValue: React.SetStateAction<string>) => setFilteredValue(newFilteredValue);
 
-    const getFilteredPhotos = (photos: AlbumsConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
+    const getFilteredPhotos = (photos: AlbumsConfig[], filteredValue: string) => photos.filter(({ title }) => title.includes(filteredValue));
 
     useEffect(() => {
         axios.get<AlbumsConfig[]>(API_URL_ALBUMS)
@@ -78,6 +78,7 @@ const Albums = () => {
                 changePerPageValue={changePerPageValue}
                 handleLeftArrow={() => changeCurrentPage(currentPage - 1)}
                 handleRightArrow={() => changeCurrentPage(currentPage + 1)}
+                selectFor='albums'
             />
         </>
     );

@@ -5,7 +5,7 @@ export interface ProfileSectionConfig {
     col: number;
     id?: number;
     key?: number;
-    profileData: Map<ProfileDataConfig>;
+    profileData: ProfileDataConfig|undefined;
 }
 
 export interface ProfileInputsConfig {
