@@ -32,7 +32,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId }: AlbumValues) => {
         {previewPhotos
           .slice(0, previewPhotosNum)
           .map(({ id, thumbnailUrl, title }: PhotosConfig) => (
-            <img key={id} src={thumbnailUrl} alt={title} />
+            <img key={id} src={thumbnailUrl} alt={title} data-testid={`preview-photo-${id}`} />
           ))}
       </section>
       <BtnWrapper>
