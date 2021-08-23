@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { PageHeadline, PhotoHeadContainer } from './Photos.styled';
-import Pagination from '../../components/Pagination';
-import NoResult from '../../components/NoResult';
+import Pagination from '../../components/Pagination/Pagination';
+import NoResult from '../../components/NoResult/NoResult';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
-import Search from '../../components/Search';
-import PhotosGrid from '../../components/PhotosGrid';
-import WithLoading from '../../components/WithLoading';
+import Search from '../../components/Search/Search';
+import PhotosGrid from '../../components/PhotosGrid/PhotosGrid';
+import WithLoading from '../../components/WithLoading/WithLoading';
 import { API_URL } from '../../global/app-config-constants';
 import { useParams } from 'react-router-dom';
-import { PhotosConfig } from './Photos';
+import { PhotosConfig } from './Photos.d';
 
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 

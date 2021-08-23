@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { PageHeadline, PhotoHeadContainer } from './Albums.styled';
-import Pagination from '../../components/Pagination';
-import NoResult from '../../components/NoResult';
+import Pagination from '../../components/Pagination/Pagination';
+import NoResult from '../../components/NoResult/NoResult';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
-import Search from '../../components/Search';
-import WithLoading from '../../components/WithLoading';
-import AlbumsGrid from '../../components/AlbumsGrid';
+import Search from '../../components/Search/Search';
+import WithLoading from '../../components/WithLoading/WithLoading';
+import AlbumsGrid from '../../components/AlbumGrid/AlbumGrid';
 import { API_URL } from '../../global/app-config-constants';
-import { AlbumsConfig } from './Albums';
+import { AlbumsConfig } from './Albums.d';
 import { useParams } from 'react-router-dom';
 
 const AlbumsGridWithLoading = WithLoading(AlbumsGrid);

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Button from '../Button';
-import Input from '../Input';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import { SearchRow } from './Search.styled';
-import { SearchConfig } from './Search';
+import { SearchConfig } from './Search.d';
 
 const Search = ({ filterImages }: SearchConfig) => {
   const [inputValue, setInputValue] = useState<string>('');

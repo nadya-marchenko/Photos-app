@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Button from '../Button';
+import Button from '../Button/Button';
 import {
   AlbumCardWrapper,
   AlbumNameWrapper,
@@ -10,8 +10,8 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import { API_URL } from '../../global/app-config-constants';
-import { AlbumValues } from './AlbumCard';
-import { PhotosConfig } from '../../pages/Photos/Photos';
+import { AlbumValues } from './AlbumCard.d';
+import { PhotosConfig } from '../../pages/Photos/Photos.d';
 
 const AlbumCard = ({ link, title, previewPhotosNum, albumId }: AlbumValues) => {
   const [previewPhotos, setPreviewPhotos] = React.useState<PhotosConfig[]>([]);

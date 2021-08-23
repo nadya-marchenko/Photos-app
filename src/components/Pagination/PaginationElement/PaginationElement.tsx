@@ -1,6 +1,6 @@
 import React from 'react';
 import { ElementWrapper } from './PaginationElement.styled';
-import { PaginationElementConfig } from './PaginationElement';
+import { PaginationElementConfig } from './PaginationElement.d';
 
 const PaginationElement = ({
   page,

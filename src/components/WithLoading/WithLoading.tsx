@@ -1,6 +1,6 @@
 import React from 'react';
-import Loader from '../Loader';
-import { WithLoadingProps } from './WithLoading';
+import Loader from '../Loader/Loader';
+import { WithLoadingProps } from './WithLoading.d';
 
 const WithLoading =
   <P extends object>(

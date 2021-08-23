@@ -1,11 +1,11 @@
 import React from 'react';
-import Input from '../Input';
+import Input from '../Input/Input';
 import {
   HeaderWrapper,
   InputsWrapper,
   SectionWrapper,
 } from './ProfileSection.styled';
-import { ProfileInputsConfig, ProfileSectionConfig } from './ProfileSection';
+import { ProfileInputsConfig, ProfileSectionConfig } from './ProfileSection.d';
 
 const ProfileSection = ({
   icon,

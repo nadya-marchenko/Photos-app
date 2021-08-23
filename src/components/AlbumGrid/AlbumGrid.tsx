@@ -1,9 +1,9 @@
 import React from 'react';
-import Grid from '../Grid';
-import NoResult from '../NoResult';
-import AlbumCard from '../AlbumCard';
-import { AlbumGridValues } from './AlbumGrid';
-import { AlbumsConfig } from '../../pages/Albums/Albums';
+import Grid from '../Grid/Grid';
+import NoResult from '../NoResult/NoResult';
+import AlbumCard from '../AlbumCard/AlbumCard';
+import { AlbumGridValues } from './AlbumGrid.d';
+import { AlbumsConfig } from '../../pages/Albums/Albums.d';
 
 const AlbumsGrid = ({ photos, cardsPerPage, currentPage }: AlbumGridValues) => {
   const firstIndexShowedCard: number = cardsPerPage * (currentPage - 1);

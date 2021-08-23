@@ -3,10 +3,10 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Header, Logo, NavWrapper } from './NavBar.styled';
-import NavItem from './NavItem';
+import NavItem from './NavItem/NavItem';
 import { useLocation } from 'react-router';
-import { NavItemConfig } from './NavItem/NavItem';
-import { LocationState } from './NavBar';
+import { NavItemConfig } from './NavItem/NavItem.d';
+import { LocationState } from './NavBar.d';
 
 const NavBar = () => {
   const currentUser: RegExpMatchArray | null =

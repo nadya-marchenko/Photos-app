@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputIcon, InputWrapper, TextFieldSet } from './Input.styled';
-import { InputConfig } from './Input';
+import { InputConfig } from './Input.d';
 
 const Input = ({
   type,

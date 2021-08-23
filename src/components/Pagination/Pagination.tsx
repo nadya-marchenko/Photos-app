@@ -1,15 +1,15 @@
 import React from 'react';
-import Select from '../Select';
+import Select from '../Select/Select';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import PaginationElement from './PaginationElement';
+import PaginationElement from './PaginationElement/PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
 import {
   perPageOptionsAlbums,
   perPageOptionsPhotos,
 } from '../../global/app-config-constants';
-import { PaginationConfig } from './Pagination';
+import { PaginationConfig } from './Pagination.d';
 
 const Pagination = ({
   activePage,

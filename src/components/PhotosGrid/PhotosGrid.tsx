@@ -1,11 +1,11 @@
 import React from 'react';
-import Grid from '../Grid';
+import Grid from '../Grid/Grid';
 import PropTypes from 'prop-types';
-import ModalZoom from '../ModalZoom';
-import NoResult from '../NoResult';
-import Card from '../Card';
-import { PhotosGridConfig } from './PhotosGrid';
-import { PhotosConfig } from '../../pages/Photos/Photos';
+import ModalZoom from '../ModalZoom/ModalZoom';
+import NoResult from '../NoResult/NoResult';
+import Card from '../Card/Card';
+import { PhotosGridConfig } from './PhotosGrid.d';
+import { PhotosConfig } from '../../pages/Photos/Photos.d';
 
 const PhotosGrid = ({
   photos,

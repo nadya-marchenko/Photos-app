@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import ProfileSection from '../../components/ProfileSection';
+import ProfileSection from '../../components/ProfileSection/ProfileSection';
 import { profileConfig } from './ProfileConfig';
 import { PageHeadline, ProfileWrapper } from './Profile.styled';
 import axios from 'axios';
 import { API_URL } from '../../global/app-config-constants';
 import { checkErrorsFromAPI } from '../../utils';
-import WithLoading from '../../components/WithLoading';
-import { ProfileDataConfig } from '../../components/ProfileSection/ProfileSection';
+import WithLoading from '../../components/WithLoading/WithLoading';
+import { ProfileDataConfig } from '../../components/ProfileSection/ProfileSection.d';
 import { useParams } from 'react-router-dom';
-import { ProfileConfigProps } from './Profile';
+import { ProfileConfigProps } from './Profile.d';
 
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 

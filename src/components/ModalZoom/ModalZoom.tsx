@@ -5,7 +5,7 @@ import {
   ModalCaption,
   ModalWrapper,
 } from './ModalZoom.styled';
-import { ModalZoomConfig } from './ModalZoom';
+import { ModalZoomConfig } from './ModalZoom.d';
 
 const ModalZoom = ({ largeImg, title, handleCloseModal }: ModalZoomConfig) => (
   <ModalWrapper>

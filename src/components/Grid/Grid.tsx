@@ -1,6 +1,6 @@
 import React, { ReactChild, ReactFragment, ReactPortal } from 'react';
 import { GridLayout } from './Grid.styled';
-import { GridConfig } from './Grid';
+import { GridConfig } from './Grid.d';
 
 const Grid = ({ children, col }: GridConfig) => (
   <GridLayout maxColumnCount={col}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputWrapper, SelectFieldSet } from './Select.styled';
-import { SelectConfig } from './Select';
+import { SelectConfig } from './Select.d';
 
 const Select = ({
   label,
