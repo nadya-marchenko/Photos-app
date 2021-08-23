@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../../global/colors';
-import { ElementWrapperProps } from './PaginationElement';
+import { ElementWrapperProps } from './PaginationElement.d';
 
 export const ElementWrapper = styled.span<ElementWrapperProps>`
   background-color: ${({ isActive }) => isActive && colors.default};
