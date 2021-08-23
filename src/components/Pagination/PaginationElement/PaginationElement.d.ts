@@ -7,3 +7,7 @@ export interface PaginationElementConfig {
 export interface ElementWrapperProps {
   isActive: boolean;
 }
+
+export interface PaginationElementDisplayProps {
+  'data-testid'?: string;
+}

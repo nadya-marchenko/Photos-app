@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { deviceSizes } from '../../global/device-sizes';
-import { GridLayoutProps } from './Grid';
+import { GridLayoutProps } from './Grid.d';
 
 export const GridLayout = styled.section<GridLayoutProps>`
   width: 70%;

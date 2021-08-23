@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
 import { deviceSizes } from '../../global/device-sizes';
-import { CardWrapperProps } from './Card';
+import { CardWrapperProps } from './Card.d';
 
 export const CardWrapper = styled.article<CardWrapperProps>`
   cursor: pointer;

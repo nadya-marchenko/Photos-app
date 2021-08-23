@@ -7,7 +7,11 @@ const PaginationElement = ({
   isActive,
   handlePageNum,
 }: PaginationElementConfig) => (
-  <ElementWrapper isActive={isActive} onClick={() => handlePageNum(page)}>
+  <ElementWrapper
+    isActive={isActive}
+    onClick={() => handlePageNum(page)}
+    data-testid={isActive ? `pagination-el-id-active` : `pagination-el-id`}
+  >
     {page}
   </ElementWrapper>
 );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
-import { IconArrowProps } from './Pagination';
+import { IconArrowProps } from './Pagination.d';
 
 export const PaginationContainer = styled.section`
   display: flex;

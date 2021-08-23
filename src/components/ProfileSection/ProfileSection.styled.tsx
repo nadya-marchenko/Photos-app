@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
 import { deviceSizes } from '../../global/device-sizes';
-import { InputsWrapperProps } from '../../components/ProfileSection/ProfileSection';
+import { InputsWrapperProps } from '../../components/ProfileSection/ProfileSection.d';
 
 export const SectionWrapper = styled.section`
   svg {

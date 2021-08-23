@@ -19,7 +19,7 @@ afterEach(() => {
 
 it('renders No result message', () => {
   act(() => {
-    render(<NoResult message='Problems with api' />, container);
+    render(<NoResult message="Problems with api" />, container);
   });
-  expect(container?.textContent).toBe('Problems with api')
+  expect(container?.textContent).toBe('Problems with api');
 });
