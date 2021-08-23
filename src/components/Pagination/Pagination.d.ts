@@ -1,14 +1,14 @@
 export interface PaginationConfig {
-    activePage: number;
-    pageNum: number;
-    showedAmount: number;
-    changeCurrentPage: (page: number) => void;
-    changePerPageValue: (perPage: number) => void;
-    handleLeftArrow: () => void;
-    handleRightArrow: () => void;
-    selectFor: 'photos'|'albums';
+  activePage: number;
+  pageNum: number;
+  showedAmount: number;
+  changeCurrentPage: (page: number) => void;
+  changePerPageValue: (perPage: number) => void;
+  handleLeftArrow: () => void;
+  handleRightArrow: () => void;
+  selectFor: 'photos' | 'albums';
 }
 
 export interface IconArrowProps {
-    isDisable: boolean;
+  isDisable: boolean;
 }

@@ -1,5 +1,5 @@
 export interface LocationState {
-    from: {
-      pathname: string;
-    };
-  }
+  from: {
+    pathname: string;
+  };
+}

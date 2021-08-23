@@ -1,6 +1,6 @@
 export interface AlbumValues {
-    link: string;
-    title: string;
-    previewPhotosNum: number,
-    albumId: number,
+  link: string;
+  title: string;
+  previewPhotosNum: number;
+  albumId: number;
 }

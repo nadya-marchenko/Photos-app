@@ -1,6 +1,6 @@
-import { PhotosConfig } from "../../pages/Photos/Photos";
+import { PhotosConfig } from '../../pages/Photos/Photos';
 export interface PhotosGridConfig {
-    photos: PhotosConfig[];
-    cardsPerPage: number;
-    currentPage: number;
+  photos: PhotosConfig[];
+  cardsPerPage: number;
+  currentPage: number;
 }

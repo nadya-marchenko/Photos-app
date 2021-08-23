@@ -8,29 +8,37 @@ import { useLocation } from 'react-router';
 import { NavItemConfig } from './NavItem/NavItem';
 import { LocationState } from './NavBar';
 
-
 const NavBar = () => {
-    const currentUser : RegExpMatchArray|null = useLocation<LocationState>().pathname.match(/\d+/g);
+  const currentUser: RegExpMatchArray | null =
+    useLocation<LocationState>().pathname.match(/\d+/g);
 
-    const nav: NavItemConfig[] = [
-        { label: 'Photos', icon: <PhotoIcon />, id: 1, link: '/profile/1/photos' },
-        { label: 'Albums', icon: <PhotoAlbumIcon />, id: 2, link: `/profile/${currentUser}/albums` },
-        { label: 'Profile', icon: <AccountCircleIcon />, id: 3, link: `/profile/${currentUser}/user` },
-    ];
+  const nav: NavItemConfig[] = [
+    { label: 'Photos', icon: <PhotoIcon />, id: 1, link: '/profile/1/photos' },
+    {
+      label: 'Albums',
+      icon: <PhotoAlbumIcon />,
+      id: 2,
+      link: `/profile/${currentUser}/albums`,
+    },
+    {
+      label: 'Profile',
+      icon: <AccountCircleIcon />,
+      id: 3,
+      link: `/profile/${currentUser}/user`,
+    },
+  ];
 
-    return (
-        <Header>
-            <Logo href="/">Photos App</Logo>
-            <NavWrapper>
-                <ul>
-                    {nav.map(({ label, icon, id, link }: NavItemConfig) =>
-                        <NavItem key={id} label={label} icon={icon} link={link} />
-                    )}
-                </ul>
-            </NavWrapper>
-        </Header>
-    );
-}
-    ;
-
+  return (
+    <Header>
+      <Logo href="/">Photos App</Logo>
+      <NavWrapper>
+        <ul>
+          {nav.map(({ label, icon, id, link }: NavItemConfig) => (
+            <NavItem key={id} label={label} icon={icon} link={link} />
+          ))}
+        </ul>
+      </NavWrapper>
+    </Header>
+  );
+};
 export default NavBar;

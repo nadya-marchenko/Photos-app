@@ -13,42 +13,50 @@ import { ProfileConfigProps } from './Profile';
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
 const Profile = () => {
-    const [ profileData, setProfileData ] = React.useState<undefined | ProfileDataConfig >();
-    const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
+  const [profileData, setProfileData] = React.useState<
+    undefined | ProfileDataConfig
+  >();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-    const { user } = useParams<Record<string, string | undefined>>();
+  const { user } = useParams<Record<string, string | undefined>>();
 
-    const userNumber: number|undefined = Number(user);
+  const userNumber: number | undefined = Number(user);
 
-    useEffect(() => {
-        axios.get(`${API_URL}/users`)
-            .then(({ data }) => {
-                const [ currentUserData ] = data.filter((el: { id: number | undefined; }) => el.id === userNumber);
-                setProfileData(currentUserData);
-            })
-            .catch(({ data }) => checkErrorsFromAPI(data))
-            .finally(() => setIsLoading(false));
-        setIsLoading(true);
-    }, [user, userNumber]);
-    
-    return (
-        <>
-            <PageHeadline>Your profile</PageHeadline>
-            <ProfileWrapper>
-                {profileConfig.map(({ icon, title, inputNames, col, id }: ProfileConfigProps) => 
-                    <ProfileSectionWithLoading
-                        isLoading={isLoading}
-                        key={id}
-                        icon={icon}
-                        title={title}
-                        inputNames={inputNames}
-                        col={col}
-                        id={id}
-                        profileData={profileData}
-                />)}
-            </ProfileWrapper>
-        </>
-    );
-}
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/users`)
+      .then(({ data }) => {
+        const [currentUserData] = data.filter(
+          (el: { id: number | undefined }) => el.id === userNumber,
+        );
+        setProfileData(currentUserData);
+      })
+      .catch(({ data }) => checkErrorsFromAPI(data))
+      .finally(() => setIsLoading(false));
+    setIsLoading(true);
+  }, [user, userNumber]);
+
+  return (
+    <>
+      <PageHeadline>Your profile</PageHeadline>
+      <ProfileWrapper>
+        {profileConfig.map(
+          ({ icon, title, inputNames, col, id }: ProfileConfigProps) => (
+            <ProfileSectionWithLoading
+              isLoading={isLoading}
+              key={id}
+              icon={icon}
+              title={title}
+              inputNames={inputNames}
+              col={col}
+              id={id}
+              profileData={profileData}
+            />
+          ),
+        )}
+      </ProfileWrapper>
+    </>
+  );
+};
 
 export default Profile;

@@ -1,3 +1,3 @@
 export interface SearchConfig {
-    filterImages: (inputValue: string) => void;
+  filterImages: (inputValue: string) => void;
 }
