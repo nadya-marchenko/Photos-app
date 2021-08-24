@@ -30,7 +30,7 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const InputsWrapper = styled.div<InputsWrapperProps>`
+export const InputsWrapper = styled.form<InputsWrapperProps>`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
