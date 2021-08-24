@@ -25,6 +25,7 @@ export const HeaderWrapper = styled.div`
     & h2 {
         font-size: 17px;
         font-weight: 400;
+        text-transform: capitalize;
     }
 `;
 

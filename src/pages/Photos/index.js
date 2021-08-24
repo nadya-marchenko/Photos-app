@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { PageHeadline, PhotoHeadContainer } from './Photos.styled';
 import Pagination from '../../components/Pagination';
-import PropTypes from 'prop-types';
 import NoResult from '../../components/NoResult';
 import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import Search from '../../components/Search';
 import PhotosGrid from '../../components/PhotosGrid';
 import WithLoading from '../../components/WithLoading';
+import { API_URL } from '../../global/app-config-constants';
 
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
 
-const Photos = ({ apiUrl, match }) => {
+const Photos = ({ match }) => {
     const album = match.params.album;
-    const API_URL_PHOTOS = `${apiUrl}/albums/${album}/photos`;
+    const API_URL_PHOTOS = `${API_URL}/albums/${album}/photos`;
 
     const [photos, setPhotos] = useState([]);
     const [filteredValue, setFilteredValue] = useState('');
@@ -84,9 +84,5 @@ const Photos = ({ apiUrl, match }) => {
         </>
     );
 };
-
-Photos.propTypes = {
-    apiUrl: PropTypes.string.isRequired,
-}
 
 export default Photos;

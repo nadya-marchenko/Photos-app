@@ -20,6 +20,10 @@ export const PaginationContainer = styled.section`
     &.MuiSvgIcon-root {
         cursor: pointer;
     }
+
+    & select {
+        background-color: ${colors.bg};
+    }
 `;
 
 export const IconArrow = styled.div`
