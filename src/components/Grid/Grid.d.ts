@@ -1,8 +1,8 @@
 export interface GridConfig {
     children: JSX.Element | JSX.Element[];
-    col: string;
+    col: number;
 }
 
 export interface GridLayoutProps {
-    maxColumnCount: string;
+    maxColumnCount: number;
 }

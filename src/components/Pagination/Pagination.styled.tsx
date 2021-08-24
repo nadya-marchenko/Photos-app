@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../global/colors';
+import { IconArrowProps } from './Pagination';
 
 export const PaginationContainer = styled.section`
     display: flex;
@@ -26,7 +27,7 @@ export const PaginationContainer = styled.section`
     }
 `;
 
-export const IconArrow = styled.div`
+export const IconArrow = styled.div<IconArrowProps>`
     svg {
         &.MuiSvgIcon-root {
             font-size: 12px;

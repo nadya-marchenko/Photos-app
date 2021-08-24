@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PageHeadline, PhotoHeadContainer } from './Photos.styled';
 import Pagination from '../../components/Pagination';
 import NoResult from '../../components/NoResult';
@@ -8,6 +8,7 @@ import Search from '../../components/Search';
 import PhotosGrid from '../../components/PhotosGrid';
 import WithLoading from '../../components/WithLoading';
 import { API_URL } from '../../global/app-config-constants';
+import { PreviewPhotosConfig } from '../../components/AlbumCard/AlbumCard';
 
 const PhotosGridWithLoading = WithLoading(PhotosGrid);
 
@@ -16,24 +17,26 @@ const Photos = ({ match }) => {
     const album = match.params.album;
     const API_URL_PHOTOS = `${API_URL}/albums/${album}/photos`;
 
-    const [photos, setPhotos] = useState([]);
-    const [filteredValue, setFilteredValue] = useState('');
-    const [isError, setIsError] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [cardsPerPage, setCardsPerPage] = useState(7);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [photos, setPhotos] = React.useState<PreviewPhotosConfig[]>([]);
+    const [filteredValue, setFilteredValue] = React.useState<string>('');
+    const [isError, setIsError] = React.useState<boolean>(false);
+    const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const [cardsPerPage, setCardsPerPage] = React.useState<number>(7);
+    const [currentPage, setCurrentPage] = React.useState<number>(1);
     
-    const pageNum = Math.ceil(photos.length / cardsPerPage);
+    const pageNum: number = Math.ceil(photos.length / cardsPerPage);
 
-    const filterImages = (newFilteredValue) => setFilteredValue(newFilteredValue);
+    const filterImages = (newFilteredValue: React.SetStateAction<string>) => setFilteredValue(newFilteredValue);
+
+    const getFilteredPhotos = (photos: PreviewPhotosConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
     useEffect(() => {
         const getPhoto = () => {
             axios.get(API_URL_PHOTOS)
                 .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
-                .catch(() => {
+                .catch(({ data }) => {
                     setIsError(true);
-                    checkErrorsFromAPI();
+                    checkErrorsFromAPI(data);
                 })
                 .finally(() => setIsLoading(false));
         };
@@ -41,16 +44,15 @@ const Photos = ({ match }) => {
         getPhoto();
     }, [API_URL_PHOTOS, filteredValue]);
 
-    const getFilteredPhotos = (photos, filteredValue) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
 
-    const changeCurrentPage = newCurrentPage => {
+    const changeCurrentPage = (newCurrentPage: React.SetStateAction<number>) => {
         setIsLoading(true);
         !(newCurrentPage < 1 || newCurrentPage > pageNum) 
             && setCurrentPage(newCurrentPage);
         setIsLoading(false);
     } 
 
-    const changePerPageValue = newPerPageValue => {
+    const changePerPageValue = (newPerPageValue: React.SetStateAction<number>) => {
         setIsLoading(true);
         setCardsPerPage(newPerPageValue);
         setCurrentPage(1);

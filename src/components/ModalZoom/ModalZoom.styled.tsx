@@ -32,7 +32,7 @@ export const ModalImg = styled.img`
     max-width: 500px;
     animation: ${ZoomEffect} 0.6s linear;
 
-    @media screen and (max-width: ${deviceSizes}) {
+    @media screen and (max-width: ${deviceSizes.desktop}) {
         width: 100%;
     }
 `;

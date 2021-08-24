@@ -1,4 +1,6 @@
-export const colors = {
+import { ColorsVariants } from "./Global";
+
+export const colors: ColorsVariants = {
     primary: '#4CAF50',
     default: '#e0e0e0',
     white: '#ffffff',
