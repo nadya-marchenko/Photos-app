@@ -5,10 +5,10 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import PaginationElement from './PaginationElement';
 import { IconArrow, PaginationContainer } from './Pagination.styled';
 import { getFilledArray } from '../../utils';
-import { perPageOptions } from '../../global/app-config-constants';
+import { perPageOptionsAlbums, perPageOptionsPhotos } from '../../global/app-config-constants';
 import { PaginationConfig } from './Pagination';
 
-const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow }: PaginationConfig) => {
+const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, changePerPageValue, handleLeftArrow, handleRightArrow, selectFor }: PaginationConfig) => {
     const getElements: () => number[] = () => getFilledArray(pageNum - 1);
 
     const allPagesWithoutLast: number[] = getElements();
@@ -20,7 +20,7 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
     const lastIndexShowedPage: number = firstIndexShowedPage + showedAmount;
 
     const getShowedPages: () => number[] = () => {
-        const checkedPages = allPagesWithoutLast.slice(firstIndexShowedPage, lastIndexShowedPage);
+        const checkedPages: number[] = allPagesWithoutLast.slice(firstIndexShowedPage, lastIndexShowedPage);
         return checkedPages.length < showedAmount
             ? allPagesWithoutLast.slice(-showedAmount + 1)
             : checkedPages;
@@ -58,7 +58,7 @@ const Pagination = ({ activePage, pageNum, showedAmount, changeCurrentPage, chan
             <Select
                 label='Per page' 
                 id='Page' 
-                options={perPageOptions}
+                options={selectFor === 'photos' ? perPageOptionsPhotos : perPageOptionsAlbums}
                 handleSettingPerPageValue={changePerPageValue}
             />
         </PaginationContainer>

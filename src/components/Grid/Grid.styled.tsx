@@ -3,7 +3,7 @@ import { deviceSizes } from "../../global/device-sizes";
 import { GridLayoutProps } from "./Grid";
 
 export const GridLayout = styled.section<GridLayoutProps>`
-    width: ${({ maxColumnCount }) => Number(maxColumnCount) < 4 ? 70 : 60}%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;

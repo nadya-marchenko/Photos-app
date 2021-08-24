@@ -48,10 +48,6 @@ export const BtnWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
 
-    & button {
-        pudding-top: 4px;
-    }
-
     svg {
         &.MuiSvgIcon-root {
             vertical-align: middle;

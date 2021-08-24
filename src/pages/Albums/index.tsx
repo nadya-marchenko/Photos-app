@@ -9,28 +9,30 @@ import WithLoading from '../../components/WithLoading';
 import AlbumsGrid from '../../components/AlbumsGrid';
 import { API_URL } from '../../global/app-config-constants';
 import { AlbumsConfig } from './Albums';
+import { useParams } from 'react-router-dom';
 
 const AlbumsGridWithLoading = WithLoading(AlbumsGrid);
 
-const Albums = ({ match }) => {
-    const user = match.params.user;
+const Albums = () => {
+    const { user } = useParams<Record<string, string | undefined>>();
+
     const API_URL_ALBUMS = `${API_URL}/users/${user}/albums`;
 
     const [photos, setPhotos] = React.useState<AlbumsConfig[]>([]);
     const [filteredValue, setFilteredValue] = React.useState<string>('');
     const [isError, setIsError] = React.useState<boolean>(false);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const [cardsPerPage, setCardsPerPage] = React.useState<number>(7);
+    const [cardsPerPage, setCardsPerPage] = React.useState<number>(6);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     
     const pageNum: number = Math.ceil(photos.length / cardsPerPage);
 
     const filterImages = (newFilteredValue: React.SetStateAction<string>) => setFilteredValue(newFilteredValue);
 
-    const getFilteredPhotos = (photos: AlbumsConfig[], filteredValue: string) => photos.filter(photoEl => photoEl.title.includes(filteredValue));
+    const getFilteredPhotos = (photos: AlbumsConfig[], filteredValue: string) => photos.filter(({ title }) => title.includes(filteredValue));
 
     useEffect(() => {
-        axios.get(API_URL_ALBUMS)
+        axios.get<AlbumsConfig[]>(API_URL_ALBUMS)
             .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
             .catch(({ data }) => {
                 setIsError(true);
@@ -76,6 +78,7 @@ const Albums = ({ match }) => {
                 changePerPageValue={changePerPageValue}
                 handleLeftArrow={() => changeCurrentPage(currentPage - 1)}
                 handleRightArrow={() => changeCurrentPage(currentPage + 1)}
+                selectFor='albums'
             />
         </>
     );

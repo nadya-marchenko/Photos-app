@@ -6,34 +6,36 @@ import axios from 'axios';
 import { API_URL } from '../../global/app-config-constants';
 import { checkErrorsFromAPI } from '../../utils';
 import WithLoading from '../../components/WithLoading';
-import { ProfileDataConfig, ProfileSectionConfig } from '../../components/ProfileSection/ProfileSection';
+import { ProfileDataConfig } from '../../components/ProfileSection/ProfileSection';
+import { useParams } from 'react-router-dom';
+import { ProfileConfigProps } from './Profile';
 
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
-const Profile = ({ match }) => {
-    const [ profileData, setProfileData ] = React.useState<ProfileDataConfig[]>([]);
+const Profile = () => {
+    const [ profileData, setProfileData ] = React.useState<undefined | ProfileDataConfig >();
     const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
 
-    const user: number = Number(match.params.user);
+    const { user } = useParams<Record<string, string | undefined>>();
 
-    const API_URL_USERS: string = `${API_URL}/users`;
+    const userNumber: number|undefined = Number(user);
 
     useEffect(() => {
-        const getData = () => {
-            axios.get(API_URL_USERS)
-                .then(({ data }) => setProfileData([...data.filter(({ id }) => id === user)]))
-                .catch(({ data }) => checkErrorsFromAPI(data))
-                .finally(() => setIsLoading(false));
-        };
+        axios.get(`${API_URL}/users`)
+            .then(({ data }) => {
+                const [ currentUserData ] = data.filter((el: { id: number | undefined; }) => el.id === userNumber);
+                setProfileData(currentUserData);
+            })
+            .catch(({ data }) => checkErrorsFromAPI(data))
+            .finally(() => setIsLoading(false));
         setIsLoading(true);
-        getData();
-    }, [API_URL_USERS, user]);
+    }, [user, userNumber]);
     
     return (
         <>
             <PageHeadline>Your profile</PageHeadline>
             <ProfileWrapper>
-                {profileConfig.map(({ icon, title, inputNames, col, id }: ProfileSectionConfig) => 
+                {profileConfig.map(({ icon, title, inputNames, col, id }: ProfileConfigProps) => 
                     <ProfileSectionWithLoading
                         isLoading={isLoading}
                         key={id}

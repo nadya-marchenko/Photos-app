@@ -6,6 +6,7 @@ export interface PaginationConfig {
     changePerPageValue: (perPage: number) => void;
     handleLeftArrow: () => void;
     handleRightArrow: () => void;
+    selectFor: 'photos'|'albums';
 }
 
 export interface IconArrowProps {
