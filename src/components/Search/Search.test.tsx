@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from '@testing-library/react';
 
 import Search from './Search';
 import { SearchConfig } from './Search.d';
@@ -13,7 +13,7 @@ const renderSearchForm = (props: JSX.IntrinsicAttributes & SearchConfig) => {
   return render(<Search {...defaultProps} {...props} />);
 };
 
-describe("<Search />", () => {
+describe('<Search />', () => {
   it('should display search form', async () => {
     const onFilterImages = jest.fn();
     const { findByTestId } = render(<Search filterImages={onFilterImages} />);
@@ -25,13 +25,13 @@ describe("<Search />", () => {
     });
   });
 
-//   it('should allow entering searching request', async () => {
-//     const filterImages = jest.fn();
-//     const { findByTestId } = renderSearchForm({ filterImages });
-//     const searchInput = await findByTestId('search');
+  //   it('should allow entering searching request', async () => {
+  //     const filterImages = jest.fn();
+  //     const { findByTestId } = renderSearchForm({ filterImages });
+  //     const searchInput = await findByTestId('search');
 
-//     fireEvent.change(searchInput, { target: { value: "test" } });
+  //     fireEvent.change(searchInput, { target: { value: "test" } });
 
-//     expect(filterImages).toHaveBeenCalledWith("test");
-//   })
+  //     expect(filterImages).toHaveBeenCalledWith("test");
+  //   })
 });

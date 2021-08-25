@@ -19,7 +19,12 @@ const Select = ({
 
   return (
     <InputWrapper>
-      <select id={id} value={value} onChange={handleChange} data-testid="select-per-page">
+      <select
+        id={id}
+        value={value}
+        onChange={handleChange}
+        data-testid="select-per-page"
+      >
         {options.map((el: number, index: number) => (
           <option key={index} value={el} data-testid={`per-page-${index}`}>
             {el}

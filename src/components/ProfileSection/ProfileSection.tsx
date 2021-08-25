@@ -25,9 +25,9 @@ const ProfileSection = ({
     <SectionWrapper>
       <HeaderWrapper>
         <span>{icon}</span>
-        <h2 data-testid='profileTitle'>{title}</h2>
+        <h2 data-testid="profileTitle">{title}</h2>
       </HeaderWrapper>
-      <InputsWrapper col={col} data-testid='profileSection'>
+      <InputsWrapper col={col} data-testid="profileSection">
         {inputNames.map(({ name, apiName, type, id }: ProfileInputsConfig) => (
           <Input
             key={id}

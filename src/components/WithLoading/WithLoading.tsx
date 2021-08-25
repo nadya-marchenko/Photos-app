@@ -1,12 +1,9 @@
-import React from 'react';
 import Loader from '../Loader/Loader';
 import { WithLoadingProps } from './WithLoading.d';
 
 const WithLoading =
-  <P extends object>(
-    Component: React.ComponentType<P>,
-  ): React.FC<P & WithLoadingProps> =>
+  (Component: any) =>
   ({ isLoading, ...props }: WithLoadingProps) =>
-    isLoading ? <Loader /> : <Component {...(props as P)} />;
+    isLoading ? <Loader /> : <Component {...props} />;
 
 export default WithLoading;
