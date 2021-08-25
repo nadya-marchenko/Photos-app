@@ -29,7 +29,7 @@ const fakePreviewPhoto = [
 ];
 
 beforeEach(() => {
-  axios.get = jest.fn(() => Promise.resolve({ data: fakePreviewPhoto }));
+  axios.get = jest.fn(() => Promise.resolve<any>({ data: fakePreviewPhoto }));
 });
 
 afterEach(cleanup);
