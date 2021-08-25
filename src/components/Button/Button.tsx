@@ -4,7 +4,7 @@ import { ButtonConfig } from './Button.d';
 
 const Button = ({ children, color, link, type }: ButtonConfig) => {
   const btn: JSX.Element = (
-    <BtnWrapper color={color} type={type}>
+    <BtnWrapper color={color} type={type} data-testid={children}>
       {children}
     </BtnWrapper>
   );
