@@ -18,9 +18,7 @@ const PageWithPagination = ({
 }: PageWithPaginationProps) => {
   const GridWithLoading = WithLoading(grid);
 
-  const [photos, setPhotos] = React.useState<PhotosProps[] | AlbumsProps[]>(
-    [],
-  );
+  const [photos, setPhotos] = React.useState<PhotosProps[] | AlbumsProps[]>([]);
   const [filteredValue, setFilteredValue] = React.useState<string>('');
   const [isError, setIsError] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);

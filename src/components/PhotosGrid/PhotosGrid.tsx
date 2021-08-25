@@ -7,11 +7,7 @@ import Card from '../Card/Card';
 import { PhotosGridProps } from './PhotosGrid.d';
 import { PhotosProps } from '../../pages/Photos/Photos.d';
 
-const PhotosGrid = ({
-  photos,
-  cardsPerPage,
-  currentPage,
-}: PhotosGridProps) => {
+const PhotosGrid = ({ photos, cardsPerPage, currentPage }: PhotosGridProps) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
   const [clickedCard, setClickedCard] = React.useState<PhotosProps>(photos[0]);
 

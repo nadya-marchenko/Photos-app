@@ -4,9 +4,7 @@ import { GridProps } from './Grid.d';
 
 const Grid = ({ children, col }: GridProps) => (
   <GridLayout maxColumnCount={col}>
-    {React.Children.toArray(children).map(
-      (item) => item,
-    )}
+    {React.Children.toArray(children).map((item) => item)}
   </GridLayout>
 );
 
