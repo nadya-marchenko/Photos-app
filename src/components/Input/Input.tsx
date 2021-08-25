@@ -19,6 +19,8 @@ const Input = ({
       value={value}
       onChange={onChangeHandler}
       defaultValue={defaultValue}
+      name={id}
+      data-testid={id}
     />
     <TextFieldSet>
       <legend>

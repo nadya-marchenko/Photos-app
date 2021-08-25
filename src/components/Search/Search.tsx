@@ -18,7 +18,7 @@ const Search = ({ filterImages }: SearchConfig) => {
   };
 
   return (
-    <SearchRow onSubmit={handleSearchBtn}>
+    <SearchRow onSubmit={handleSearchBtn} data-testid="search-form">
       <Input
         type="search"
         label="Search by title"
@@ -27,7 +27,7 @@ const Search = ({ filterImages }: SearchConfig) => {
         value={inputValue}
         onChangeHandler={handleInput}
       />
-      <Button type="submit" color="default">
+      <Button type="submit" color="default" data-testid="search-btn">
         Search
       </Button>
     </SearchRow>
