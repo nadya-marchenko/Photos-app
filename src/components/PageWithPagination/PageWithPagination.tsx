@@ -6,19 +6,19 @@ import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import Search from '../../components/Search/Search';
 import WithLoading from '../../components/WithLoading/WithLoading';
-import { PageWithPaginationParams } from './PageWithPagination.d';
-import { PhotosConfig } from '../../pages/Photos/Photos.d';
-import { AlbumsConfig } from '../../pages/Albums/Albums.d';
+import { PageWithPaginationProps } from './PageWithPagination.d';
+import { PhotosProps } from '../../pages/Photos/Photos.d';
+import { AlbumsProps } from '../../pages/Albums/Albums.d';
 
 const PageWithPagination = ({
   API_URI,
   selectorFor,
   grid,
   defaultNumPage,
-}: PageWithPaginationParams) => {
+}: PageWithPaginationProps) => {
   const GridWithLoading = WithLoading(grid);
 
-  const [photos, setPhotos] = React.useState<PhotosConfig[] | AlbumsConfig[]>(
+  const [photos, setPhotos] = React.useState<PhotosProps[] | AlbumsProps[]>(
     [],
   );
   const [filteredValue, setFilteredValue] = React.useState<string>('');
@@ -33,7 +33,7 @@ const PageWithPagination = ({
   const filterImages = (newFilteredValue: React.SetStateAction<string>) =>
     setFilteredValue(newFilteredValue);
 
-  const getFilteredPhotos = (photos: PhotosConfig[], filteredValue: string) =>
+  const getFilteredPhotos = (photos: PhotosProps[], filteredValue: string) =>
     photos.filter((photoEl) => photoEl.title.includes(filteredValue));
 
   useEffect(() => {

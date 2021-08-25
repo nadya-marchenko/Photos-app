@@ -2,9 +2,9 @@ import React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 
 import Search from './Search';
-import { SearchConfig } from './Search.d';
+import { SearchProps } from './Search.d';
 
-const renderSearchForm = (props: JSX.IntrinsicAttributes & SearchConfig) => {
+const renderSearchForm = (props: JSX.IntrinsicAttributes & SearchProps) => {
   const defaultProps = {
     filterImages() {
       return;

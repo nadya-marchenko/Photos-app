@@ -1,4 +1,4 @@
-export interface PaginationConfig {
+export interface PaginationProps {
   activePage: number;
   pageNum: number;
   showedAmount: number;

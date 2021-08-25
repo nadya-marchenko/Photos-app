@@ -1,9 +1,9 @@
 import React from 'react';
 import { MessageWrapper } from './NoResult.styled';
 import WarningIcon from '@material-ui/icons/Warning';
-import { NoResultOptions } from './NoResult.d';
+import { NoResultProps } from './NoResult.d';
 
-const NoResult = ({ message }: NoResultOptions) => (
+const NoResult = ({ message }: NoResultProps) => (
   <MessageWrapper>
     <WarningIcon />
     <span>{message}</span>

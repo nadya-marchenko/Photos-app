@@ -9,7 +9,7 @@ import {
   perPageOptionsAlbums,
   perPageOptionsPhotos,
 } from '../../global/app-config-constants';
-import { PaginationConfig } from './Pagination.d';
+import { PaginationProps } from './Pagination.d';
 
 const Pagination = ({
   activePage,
@@ -20,7 +20,7 @@ const Pagination = ({
   handleLeftArrow,
   handleRightArrow,
   selectFor,
-}: PaginationConfig) => {
+}: PaginationProps) => {
   const getElements: () => number[] = () => getFilledArray(pageNum - 1);
 
   const allPagesWithoutLast: number[] = getElements();

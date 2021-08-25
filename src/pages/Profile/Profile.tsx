@@ -6,15 +6,15 @@ import axios from 'axios';
 import { API_URL } from '../../global/app-config-constants';
 import { checkErrorsFromAPI } from '../../utils';
 import WithLoading from '../../components/WithLoading/WithLoading';
-import { ProfileDataConfig } from '../../components/ProfileSection/ProfileSection.d';
+import { ProfileDataProps } from '../../components/ProfileSection/ProfileSection.d';
 import { useParams } from 'react-router-dom';
-import { ProfileConfigProps } from './Profile.d';
+import { ProfileProps } from './Profile.d';
 
 const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
 const Profile = () => {
   const [profileData, setProfileData] = React.useState<
-    undefined | ProfileDataConfig
+    undefined | ProfileDataProps
   >();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -41,7 +41,7 @@ const Profile = () => {
       <PageHeadline>Your profile</PageHeadline>
       <ProfileWrapper>
         {profileConfig.map(
-          ({ icon, title, inputNames, col, id }: ProfileConfigProps) => (
+          ({ icon, title, inputNames, col, id }: ProfileProps) => (
             <ProfileSectionWithLoading
               isLoading={isLoading}
               key={id}

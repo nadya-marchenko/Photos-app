@@ -1,8 +1,9 @@
-import { AlbumGridValues } from '../AlbumGrid/AlbumGrid';
+import { AlbumGridProps } from '../AlbumGrid/AlbumGrid';
+import { PhotosGridProps } from '../PhotosGrid/PhotosGrid';
 
-export interface PageWithPaginationParams {
+export interface PageWithPaginationProps {
   API_URI: string;
   selectorFor: 'photos' | 'albums';
-  grid: PhotosGridConfig | AlbumGridValues;
+  grid: PhotosGridProps | AlbumGridProps;
   defaultNumPage: number;
 }

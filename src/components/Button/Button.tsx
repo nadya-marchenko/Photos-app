@@ -1,8 +1,8 @@
 import React from 'react';
 import { BtnWrapper } from './Button.styled';
-import { ButtonConfig } from './Button.d';
+import { ButtonProps } from './Button.d';
 
-const Button = ({ children, color, link, type }: ButtonConfig) => {
+const Button = ({ children, color, link, type }: ButtonProps) => {
   const btn: JSX.Element = (
     <BtnWrapper color={color} type={type} data-testid={children}>
       {children}

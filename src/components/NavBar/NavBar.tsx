@@ -5,14 +5,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Header, Logo, NavWrapper } from './NavBar.styled';
 import NavItem from './NavItem/NavItem';
 import { useLocation } from 'react-router';
-import { NavItemConfig } from './NavItem/NavItem.d';
-import { LocationState } from './NavBar.d';
+import { NavItemProps } from './NavItem/NavItem.d';
+import { LocationStateProps } from './NavBar.d';
 
 const NavBar = () => {
   const currentUser: RegExpMatchArray | null =
-    useLocation<LocationState>().pathname.match(/\d+/g);
+    useLocation<LocationStateProps>().pathname.match(/\d+/g);
 
-  const nav: NavItemConfig[] = [
+  const nav: NavItemProps[] = [
     { label: 'Photos', icon: <PhotoIcon />, id: 1, link: '/profile/1/photos' },
     {
       label: 'Albums',
@@ -33,7 +33,7 @@ const NavBar = () => {
       <Logo href="/">Photos App</Logo>
       <NavWrapper>
         <ul>
-          {nav.map(({ label, icon, id, link }: NavItemConfig) => (
+          {nav.map(({ label, icon, id, link }: NavItemProps) => (
             <NavItem key={id} label={label} icon={icon} link={link} />
           ))}
         </ul>

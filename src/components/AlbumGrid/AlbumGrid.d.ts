@@ -1,8 +1,8 @@
-import { AlbumsConfig } from '../../pages/Albums/Albums';
-import { PhotosConfig } from '../../pages/Photos/Photos';
+import { AlbumsProps } from '../../pages/Albums/Albums';
+import { PhotosProps } from '../../pages/Photos/Photos';
 
-export interface AlbumGridValues {
-  photos: AlbumsConfig[] | PhotosConfig[];
+export interface AlbumGridProps {
+  photos: AlbumsProps[] | PhotosProps[];
   cardsPerPage: number;
   currentPage: number;
 }

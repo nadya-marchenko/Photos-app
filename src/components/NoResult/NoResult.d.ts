@@ -1,3 +1,3 @@
-export interface NoResultOptions {
+export interface NoResultProps {
   message: string;
 }

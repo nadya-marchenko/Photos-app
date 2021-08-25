@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputIcon, InputWrapper, TextFieldSet } from './Input.styled';
-import { InputConfig } from './Input.d';
+import { InputProps } from './Input.d';
 
 const Input = ({
   type,
@@ -10,7 +10,7 @@ const Input = ({
   onChangeHandler,
   value,
   defaultValue,
-}: InputConfig) => (
+}: InputProps) => (
   <InputWrapper type={type}>
     {type === 'search' && <InputIcon>{icon}</InputIcon>}
     <input

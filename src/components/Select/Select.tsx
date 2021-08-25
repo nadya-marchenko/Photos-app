@@ -1,13 +1,13 @@
 import React from 'react';
 import { InputWrapper, SelectFieldSet } from './Select.styled';
-import { SelectConfig } from './Select.d';
+import { SelectProps } from './Select.d';
 
 const Select = ({
   label,
   id,
   options,
   handleSettingPerPageValue,
-}: SelectConfig) => {
+}: SelectProps) => {
   const [value, setValue] = React.useState<string>('');
 
   const handleChange = (e: {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavContainer, NavItemLabel } from './NavItem.styled';
-import { NavItemConfig } from './NavItem.d';
+import { NavItemProps } from './NavItem.d';
 
-const NavItem = ({ label, icon, link }: NavItemConfig) => (
+const NavItem = ({ label, icon, link }: NavItemProps) => (
   <NavContainer>
     <NavLink to={link}>
       {icon}
