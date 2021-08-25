@@ -7,14 +7,20 @@ describe('<ModalZoom />', () => {
   const onClick = jest.fn();
 
   it('ModalZoom shows the children and a close button', async () => {
-    const { getByTestId } = render(<ModalZoom largeImg={fakeLargeImg} title='Test' handleCloseModal={onClick} />);
+    const { getByTestId } = render(
+      <ModalZoom
+        largeImg={fakeLargeImg}
+        title="Test"
+        handleCloseModal={onClick}
+      />,
+    );
     const modalBtn = getByTestId('modal-zoom-btn');
     const modalZoom = getByTestId('modal-zoom');
 
     expect(modalZoom).toBeInTheDocument();
 
-    fireEvent.click(modalBtn); 
+    fireEvent.click(modalBtn);
 
-    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });
