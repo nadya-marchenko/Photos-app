@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MessageWrapper = styled.p`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    & span {
-        margin-left: 7px;
-    }
+  & span {
+    margin-left: 7px;
+  }
 
-    svg {
-        &.MuiSvgIcon-root {
-            vertical-align: middle;
-        }
+  svg {
+    &.MuiSvgIcon-root {
+      vertical-align: middle;
     }
+  }
 `;

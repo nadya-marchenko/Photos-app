@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { colors } from '../../global/colors';
 
 export const SearchRow = styled.form`
-    display: flex;
+  display: flex;
 
-    & input {
-        background-color: ${colors.bg};
-    }
+  & input {
+    background-color: ${colors.bg};
+  }
 `;

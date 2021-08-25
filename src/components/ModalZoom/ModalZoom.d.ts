@@ -1,5 +1,5 @@
 export interface ModalZoomConfig {
-    largeImg: string;
-    title: string;
-    handleCloseModal: () => void;
+  largeImg: string;
+  title: string;
+  handleCloseModal: () => void;
 }
