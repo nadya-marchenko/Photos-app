@@ -4,7 +4,7 @@ import { NavContainer, NavItemLabel } from './NavItem.styled';
 import { NavItemProps } from './NavItem.d';
 
 const NavItem = ({ label, icon, link }: NavItemProps) => (
-  <NavContainer>
+  <NavContainer data-testid="nav-item">
     <NavLink to={link}>
       {icon}
       <NavItemLabel>{label}</NavItemLabel>
