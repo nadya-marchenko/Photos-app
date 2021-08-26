@@ -63,7 +63,7 @@ const PageWithPagination = ({
   };
 
   return (
-    <>
+    <div data-testid="page-with-pagination">
       <PhotoHeadContainer>
         <PageHeadline>{`Your ${selectorFor}`}</PageHeadline>
         <Search filterImages={filterImages} />
@@ -88,7 +88,7 @@ const PageWithPagination = ({
         handleRightArrow={() => changeCurrentPage(currentPage + 1)}
         selectFor={selectorFor}
       />
-    </>
+    </div>
   );
 };
 
