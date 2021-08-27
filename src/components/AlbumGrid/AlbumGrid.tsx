@@ -2,14 +2,14 @@ import React from 'react';
 import Grid from '../Grid/Grid';
 import NoResult from '../NoResult/NoResult';
 import AlbumCard from '../AlbumCard/AlbumCard';
-import { AlbumGridValues } from './AlbumGrid.d';
-import { AlbumsConfig } from '../../pages/Albums/Albums.d';
+import { AlbumGridProps } from './AlbumGrid.d';
+import { AlbumsProps } from '../../pages/Albums/Albums.d';
 
-const AlbumsGrid = ({ photos, cardsPerPage, currentPage }: AlbumGridValues) => {
+const AlbumsGrid = ({ photos, cardsPerPage, currentPage }: AlbumGridProps) => {
   const firstIndexShowedCard: number = cardsPerPage * (currentPage - 1);
   const lastIndexShowedCard: number = firstIndexShowedCard + cardsPerPage;
 
-  const photosShowed: AlbumsConfig[] = photos.slice(
+  const photosShowed: AlbumsProps[] = photos.slice(
     firstIndexShowedCard,
     lastIndexShowedCard,
   );
@@ -17,7 +17,7 @@ const AlbumsGrid = ({ photos, cardsPerPage, currentPage }: AlbumGridValues) => {
   return (
     <Grid col={3}>
       {photosShowed.length ? (
-        photosShowed.map(({ id, title, userId }: AlbumsConfig) => (
+        photosShowed.map(({ id, title, userId }: AlbumsProps) => (
           <AlbumCard
             key={id}
             link={`/profile/${userId}/photos`}

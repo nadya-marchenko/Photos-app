@@ -1,4 +1,4 @@
-export interface CardConfig {
+export interface CardProps {
   url: string;
   title: string;
   col: number;

@@ -1,13 +1,13 @@
 import React from 'react';
 import { InputWrapper, SelectFieldSet } from './Select.styled';
-import { SelectConfig } from './Select.d';
+import { SelectProps } from './Select.d';
 
 const Select = ({
   label,
   id,
   options,
   handleSettingPerPageValue,
-}: SelectConfig) => {
+}: SelectProps) => {
   const [value, setValue] = React.useState<string>('');
 
   const handleChange = (e: {
@@ -19,7 +19,12 @@ const Select = ({
 
   return (
     <InputWrapper>
-      <select id={id} value={value} onChange={handleChange} data-testid="select-per-page">
+      <select
+        id={id}
+        value={value}
+        onChange={handleChange}
+        data-testid="select-per-page"
+      >
         {options.map((el: number, index: number) => (
           <option key={index} value={el} data-testid={`per-page-${index}`}>
             {el}

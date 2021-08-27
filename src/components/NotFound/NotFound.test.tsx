@@ -1,24 +1,14 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-
+import { render } from '@testing-library/react';
 import NotFound from './NotFound';
 
-let container = null;
-beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
+describe('<NotFound />', () => {
+  it('NotFound shows icon and warning text', async () => {
+    const { getByTestId } = render(<NotFound />);
+    const notFound = getByTestId('not-found');
+    const notFoundIcon = getByTestId('not-found-icon');
 
-afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it("renders page not found", () => {
-  act(() => {
-    render(<NotFound />, container);
+    expect(notFound).toHaveTextContent('Page Not Found');
+    expect(notFound).toContainElement(notFoundIcon);
   });
-  expect(container.textContent).toBe("Page Not Found");
 });

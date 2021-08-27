@@ -1,4 +1,4 @@
-export interface NavItemConfig {
+export interface NavItemProps {
   label: string;
   icon?: JSX.Element;
   link: string;

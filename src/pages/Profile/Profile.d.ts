@@ -1,9 +1,9 @@
-import { ProfileInputsConfig } from '../../components/ProfileSection/ProfileSection';
+import { ProfileInputsProps } from '../../components/ProfileSection/ProfileSection';
 
-export interface ProfileConfigProps {
+export interface ProfileProps {
   icon: JSX.Element | JSX.Element[];
   title: string;
-  inputNames: ProfileInputsConfig[];
+  inputNames: ProfileInputsProps[];
   col: number;
   id: number;
 }

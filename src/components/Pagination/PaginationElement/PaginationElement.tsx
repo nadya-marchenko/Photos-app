@@ -1,12 +1,12 @@
 import React from 'react';
 import { ElementWrapper } from './PaginationElement.styled';
-import { PaginationElementConfig } from './PaginationElement.d';
+import { PaginationElementProps } from './PaginationElement.d';
 
 const PaginationElement = ({
   page,
   isActive,
   handlePageNum,
-}: PaginationElementConfig) => (
+}: PaginationElementProps) => (
   <ElementWrapper
     isActive={isActive}
     onClick={() => handlePageNum(page)}

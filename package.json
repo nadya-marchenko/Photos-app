@@ -32,7 +32,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -f",
     "lint": "eslint ./src/**/*.js",
-    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +58,11 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "prettier": "2.3.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "prettier --write"
   }
 }

@@ -3,9 +3,9 @@ import Button from '../Button/Button';
 import Input from '../Input/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import { SearchRow } from './Search.styled';
-import { SearchConfig } from './Search.d';
+import { SearchProps } from './Search.d';
 
-const Search = ({ filterImages }: SearchConfig) => {
+const Search = ({ filterImages }: SearchProps) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleInput = (e: {

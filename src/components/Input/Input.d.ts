@@ -1,4 +1,4 @@
-export interface InputConfig {
+export interface InputProps {
   key?: string;
   type: string;
   label: string;

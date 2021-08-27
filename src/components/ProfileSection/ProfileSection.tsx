@@ -5,7 +5,7 @@ import {
   InputsWrapper,
   SectionWrapper,
 } from './ProfileSection.styled';
-import { ProfileInputsConfig, ProfileSectionConfig } from './ProfileSection.d';
+import { ProfileInputsProps, ProfileSectionProps } from './ProfileSection.d';
 
 const ProfileSection = ({
   icon,
@@ -13,7 +13,7 @@ const ProfileSection = ({
   inputNames,
   col,
   profileData,
-}: ProfileSectionConfig) => {
+}: ProfileSectionProps) => {
   const getDefaultValue = (apiName: string) => {
     if (!profileData) return '';
     return (profileData as any)[title]
@@ -25,10 +25,10 @@ const ProfileSection = ({
     <SectionWrapper>
       <HeaderWrapper>
         <span>{icon}</span>
-        <h2 data-testid='profileTitle'>{title}</h2>
+        <h2 data-testid="profileTitle">{title}</h2>
       </HeaderWrapper>
-      <InputsWrapper col={col} data-testid='profileSection'>
-        {inputNames.map(({ name, apiName, type, id }: ProfileInputsConfig) => (
+      <InputsWrapper col={col} data-testid="profileSection">
+        {inputNames.map(({ name, apiName, type, id }: ProfileInputsProps) => (
           <Input
             key={id}
             type={type}

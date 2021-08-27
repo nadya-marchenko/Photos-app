@@ -1,4 +1,4 @@
-export interface PaginationElementConfig {
+export interface PaginationElementProps {
   page: number;
   isActive: boolean;
   handlePageNum(page: number): any;

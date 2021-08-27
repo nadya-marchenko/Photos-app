@@ -1,21 +1,21 @@
-export interface ProfileSectionConfig {
+export interface ProfileSectionProps {
   icon: JSX.Element | JSX.Element[];
   title: string;
-  inputNames: ProfileInputsConfig[];
+  inputNames: ProfileInputsProps[];
   col: number;
   id?: number;
   key?: number;
-  profileData: ProfileDataConfig | undefined;
+  profileData: ProfileDataProps | undefined;
 }
 
-export interface ProfileInputsConfig {
+export interface ProfileInputsProps {
   name: string;
   apiName: string;
   type: string;
   id: string;
 }
 
-export interface AddressConfig {
+export interface AddressProps {
   street: string;
   suite: string;
   city: string;
@@ -26,21 +26,21 @@ export interface AddressConfig {
   };
 }
 
-export interface CompanyConfig {
+export interface CompanyProps {
   name: string;
   catchPhrase: string;
   bs: string;
 }
 
-export interface ProfileDataConfig {
+export interface ProfileDataProps {
   id: number;
   name: string;
   username: string;
   email: string;
-  address: AddressConfig;
+  address: AddressProps;
   phone: string;
   website: string;
-  company: CompanyConfig;
+  company: CompanyProps;
 }
 
 export interface InputsWrapperProps {

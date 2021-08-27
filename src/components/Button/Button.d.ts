@@ -1,4 +1,4 @@
-export interface ButtonConfig {
+export interface ButtonProps {
   children: JSX.Element | JSX.Element[] | string;
   color?: string;
   link?: string;

@@ -4,19 +4,15 @@ import PropTypes from 'prop-types';
 import ModalZoom from '../ModalZoom/ModalZoom';
 import NoResult from '../NoResult/NoResult';
 import Card from '../Card/Card';
-import { PhotosGridConfig } from './PhotosGrid.d';
-import { PhotosConfig } from '../../pages/Photos/Photos.d';
+import { PhotosGridProps } from './PhotosGrid.d';
+import { PhotosProps } from '../../pages/Photos/Photos.d';
 
-const PhotosGrid = ({
-  photos,
-  cardsPerPage,
-  currentPage,
-}: PhotosGridConfig) => {
+const PhotosGrid = ({ photos, cardsPerPage, currentPage }: PhotosGridProps) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
-  const [clickedCard, setClickedCard] = React.useState<PhotosConfig>(photos[0]);
+  const [clickedCard, setClickedCard] = React.useState<PhotosProps>(photos[0]);
 
   const openModal = (id: number) => {
-    const [openedCard]: PhotosConfig[] = photos.filter(
+    const [openedCard]: PhotosProps[] = photos.filter(
       (image) => image.id === id,
     );
     setIsModalOpen(true);
@@ -28,7 +24,7 @@ const PhotosGrid = ({
   const firstIndexShowedCard: number = cardsPerPage * (currentPage - 1);
   const lastIndexShowedCard: number = firstIndexShowedCard + cardsPerPage;
 
-  const photosShowed: PhotosConfig[] = photos.slice(
+  const photosShowed: PhotosProps[] = photos.slice(
     firstIndexShowedCard,
     lastIndexShowedCard,
   );
@@ -46,7 +42,7 @@ const PhotosGrid = ({
       </>
       <>
         {photosShowed.length ? (
-          photosShowed.map(({ id, thumbnailUrl, title }: PhotosConfig) => (
+          photosShowed.map(({ id, thumbnailUrl, title }: PhotosProps) => (
             <Card
               key={id}
               id={id}

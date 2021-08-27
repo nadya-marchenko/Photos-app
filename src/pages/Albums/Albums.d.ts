@@ -1,4 +1,4 @@
-export interface AlbumsConfig {
+export interface AlbumsProps {
   userId: number;
   id: number;
   title: string;

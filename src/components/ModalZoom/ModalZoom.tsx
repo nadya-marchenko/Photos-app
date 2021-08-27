@@ -5,11 +5,13 @@ import {
   ModalCaption,
   ModalWrapper,
 } from './ModalZoom.styled';
-import { ModalZoomConfig } from './ModalZoom.d';
+import { ModalZoomProps } from './ModalZoom.d';
 
-const ModalZoom = ({ largeImg, title, handleCloseModal }: ModalZoomConfig) => (
-  <ModalWrapper>
-    <CloseBtn onClick={handleCloseModal}>&times;</CloseBtn>
+const ModalZoom = ({ largeImg, title, handleCloseModal }: ModalZoomProps) => (
+  <ModalWrapper data-testid="modal-zoom">
+    <CloseBtn onClick={handleCloseModal} data-testid="modal-zoom-btn">
+      &times;
+    </CloseBtn>
     <ModalImg src={largeImg} alt={title} />
     <ModalCaption>{title}</ModalCaption>
   </ModalWrapper>

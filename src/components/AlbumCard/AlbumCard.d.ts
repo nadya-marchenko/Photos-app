@@ -1,4 +1,4 @@
-export interface AlbumValues {
+export interface AlbumProps {
   link: string;
   title: string;
   previewPhotosNum: number;
