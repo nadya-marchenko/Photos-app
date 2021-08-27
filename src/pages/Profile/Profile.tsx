@@ -37,7 +37,7 @@ const Profile = () => {
   }, [user, userNumber]);
 
   return (
-    <>
+    <div data-testid="profile-page">
       <PageHeadline>Your profile</PageHeadline>
       <ProfileWrapper>
         {profileConfig.map(
@@ -55,7 +55,7 @@ const Profile = () => {
           ),
         )}
       </ProfileWrapper>
-    </>
+    </div>
   );
 };
 

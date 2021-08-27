@@ -45,10 +45,14 @@ const Pagination = ({
   const isShowDots: boolean = !showedPages.includes(pageNum - 1);
 
   return (
-    <PaginationContainer>
+    <PaginationContainer data-testid="pagination">
       {pageNum > 1 && (
         <>
-          <IconArrow isDisable={activePage === 1} onClick={handleLeftArrow}>
+          <IconArrow
+            isDisable={activePage === 1}
+            onClick={handleLeftArrow}
+            data-testid="pagination-left-icon"
+          >
             <ArrowBackIosIcon />
           </IconArrow>
           {showedPages.map((page: number) => (
@@ -69,6 +73,7 @@ const Pagination = ({
           <IconArrow
             isDisable={activePage === pageNum}
             onClick={handleRightArrow}
+            data-testid="pagination-right-icon"
           >
             <ArrowForwardIosIcon />
           </IconArrow>
