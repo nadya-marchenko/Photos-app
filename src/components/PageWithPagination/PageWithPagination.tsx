@@ -7,8 +7,8 @@ import { checkErrorsFromAPI } from '../../utils';
 import Search from '../../components/Search/Search';
 import WithLoading from '../../components/WithLoading/WithLoading';
 import { PageWithPaginationProps } from './PageWithPagination.d';
-import { PhotosProps } from '../../pages/Photos/Photos.d';
-import { AlbumsProps } from '../../pages/Albums/Albums.d';
+import { Photos } from '../../pages/Photos/Photos.d';
+import { Albums } from '../../pages/Albums/Albums.d';
 
 const PageWithPagination = ({
   API_URI,
@@ -18,7 +18,7 @@ const PageWithPagination = ({
 }: PageWithPaginationProps) => {
   const GridWithLoading = WithLoading(grid);
 
-  const [photos, setPhotos] = React.useState<PhotosProps[] | AlbumsProps[]>([]);
+  const [photos, setPhotos] = React.useState<Photos[] | Albums[]>([]);
   const [filteredValue, setFilteredValue] = React.useState<string>('');
   const [isError, setIsError] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -31,7 +31,7 @@ const PageWithPagination = ({
   const filterImages = (newFilteredValue: React.SetStateAction<string>) =>
     setFilteredValue(newFilteredValue);
 
-  const getFilteredPhotos = (photos: PhotosProps[], filteredValue: string) =>
+  const getFilteredPhotos = (photos: Photos[], filteredValue: string) =>
     photos.filter((photoEl) => photoEl.title.includes(filteredValue));
 
   useEffect(() => {

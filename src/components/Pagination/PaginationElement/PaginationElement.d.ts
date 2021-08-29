@@ -1,7 +1,7 @@
 export interface PaginationElementProps {
   page: number;
   isActive: boolean;
-  handlePageNum(page: number): any;
+  handlePageNum: (page: number) => void;
 }
 
 export interface ElementWrapperProps {
