@@ -21,7 +21,7 @@ const PageWithPagination = ({
   const [photos, setPhotos] = React.useState<Photos[] | Albums[]>([]);
   const [filteredValue, setFilteredValue] = React.useState<string>('');
   const [isError, setIsError] = React.useState<boolean>(false);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const [cardsPerPage, setCardsPerPage] =
     React.useState<number>(defaultNumPage);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -31,13 +31,10 @@ const PageWithPagination = ({
   const filterImages = (newFilteredValue: React.SetStateAction<string>) =>
     setFilteredValue(newFilteredValue);
 
-  const getFilteredPhotos = (photos: Photos[], filteredValue: string) =>
-    photos.filter((photoEl) => photoEl.title.includes(filteredValue));
-
   useEffect(() => {
     axios
-      .get(API_URI)
-      .then(({ data }) => setPhotos(getFilteredPhotos(data, filteredValue)))
+      .get(filteredValue.length > 0 ? `${API_URI}?q=${filteredValue}` : API_URI)
+      .then(({ data }) => setPhotos(data))
       .catch(({ data }) => {
         setIsError(true);
         checkErrorsFromAPI(data);
@@ -76,6 +73,7 @@ const PageWithPagination = ({
           photos={photos}
           cardsPerPage={cardsPerPage}
           currentPage={currentPage}
+          data-testid="not-loading"
         />
       )}
       <Pagination
