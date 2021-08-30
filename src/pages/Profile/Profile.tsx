@@ -27,7 +27,6 @@ const Profile = () => {
       .then(({ data }) => setProfileData(data))
       .catch(({ data }) => checkErrorsFromAPI(data))
       .finally(() => setIsLoading(false));
-    setIsLoading(true);
   }, [userId]);
 
   return (

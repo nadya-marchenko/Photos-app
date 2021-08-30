@@ -4,6 +4,7 @@ import { deviceSizes } from '../../global/device-sizes';
 import { CardWrapperProps } from './Card.d';
 
 export const CardWrapper = styled.article<CardWrapperProps>`
+  max-width: 300px;
   cursor: pointer;
   background-color: ${colors.white};
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

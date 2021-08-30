@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Input from './Input';
+
+<Meta
+  title="Components/Input"
+  component={Input}
+  argTypes={{
+    variant: {
+      type: ['search'],
+    }
+  }}
+/>
+
+# Input 
+
+### USAGE
+
+Inputs are used for forms and search.
+
+### EXAMPLES
+
+export const Template = args => <Input {...args} />
+
+<Canvas>
+  <Story name='Simple' args={{ label: 'Input', defaultValue: 'Default value' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name='For search' args={{ label: 'search', type: 'search' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

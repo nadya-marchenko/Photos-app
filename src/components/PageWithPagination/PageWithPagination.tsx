@@ -31,17 +31,20 @@ const PageWithPagination = ({
   const filterImages = (newFilteredValue: React.SetStateAction<string>) =>
     setFilteredValue(newFilteredValue);
 
+  const getFilteredUrl = (filteredValue: string) =>
+    filteredValue.length > 0 ? `${API_URI}?q=${filteredValue}` : API_URI;
+
   useEffect(() => {
+    setIsLoading(true);
     axios
-      .get(filteredValue.length > 0 ? `${API_URI}?q=${filteredValue}` : API_URI)
+      .get(getFilteredUrl(filteredValue))
       .then(({ data }) => setPhotos(data))
       .catch(({ data }) => {
         setIsError(true);
         checkErrorsFromAPI(data);
       })
       .finally(() => setIsLoading(false));
-    setIsLoading(true);
-  }, [API_URI, filteredValue]);
+  }, [filteredValue]);
 
   const changeCurrentPage = (newCurrentPage: React.SetStateAction<number>) => {
     setIsLoading(true);
