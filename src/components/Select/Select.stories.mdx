@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Select from './Select';
+
+<Meta
+  title="Components/Select"
+  component={Select}
+/>
+
+# Select 
+
+### USAGE
+
+Selects are used for choosing elements from providing variants.
+
+### EXAMPLES
+
+export const Template = args => <Select {...args} />
+
+<Canvas>
+  <Story name='Per page' args={{ label: 'Per page', options: [10, 20, 30, 40] }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

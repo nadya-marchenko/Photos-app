@@ -1,17 +1,35 @@
-<!-- Button.stories.mdx -->
-
-import { Meta, Story } from '@storybook/addon-docs';
-
-import { Button } from './Button';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Button from './Button';
 
 <Meta
   title="Components/Button"
   component={Button}
-  decorators={[
-    (Story) => (
-      <div style={{ margin: '3em' }}>
-        <Story />
-      </div>
-    ),
-  ]}
+  argTypes={{
+    variant: {
+      color: ['primary', 'default'],
+      type: ['submit']
+    }
+  }}
 />
+
+# Button 
+
+### USAGE
+
+Buttons are used to initialize an actions.
+
+### EXAMPLES
+
+export const Template = args => <Button {...args} />
+
+<Canvas>
+  <Story name='Primary' args={{ color: 'primary', children: 'Primary' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name='Default' args={{ color: 'default', children: 'Default' }}>
+    {Template.bind({})}
+  </Story>
+  <Story name='With link' args={{ color: 'primary', link: '/profile', children: 'Button with link' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

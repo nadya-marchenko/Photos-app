@@ -1,19 +1,33 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { act, render } from '@testing-library/react';
+import { MemoryRouter, Router } from 'react-router-dom';
 import Routes from './Routes';
 
+import { mount } from 'enzyme';
+
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { createMemoryHistory } from 'history';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 describe('<Routes>', () => {
-  it('should render albums page', () => {
-    const { getByTestId } = render(
-      <MemoryRouter initialEntries={['/profile/1/albums']}>
-        <Routes />
-      </MemoryRouter>,
-    );
+  it('should render albums page', async () => {
+    const history = createMemoryHistory();
+    const route = '/profile/1/albums';
+    history.push(route);
 
-    const app = getByTestId('page-with-pagination');
+    let wrapper;
 
-    expect(app.querySelector('h1')).toHaveTextContent('Your albums');
+    await act(async () => {
+      wrapper = mount(
+        <Router history={history}>
+          <Routes />
+        </Router>,
+      );
+
+      expect(wrapper.find('h1').at(0).props().children).toEqual('Your albums');
+    });
   });
 
   it('should render notfound page', () => {

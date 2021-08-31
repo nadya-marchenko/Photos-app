@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import NoResult from './NoResult';
+
+<Meta
+  title="Components/NoResult"
+  component={NoResult}
+/>
+
+# NoResult 
+
+### USAGE
+
+NoResult component is used for showing info that something goes wrong.
+
+### EXAMPLES
+
+export const Template = args => <NoResult {...args} />;
+
+<Canvas>
+  <Story name='Warning message' args={{ message: 'No results. Please, try again' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

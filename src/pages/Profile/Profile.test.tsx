@@ -2,9 +2,16 @@ import React from 'react';
 import { act, cleanup, render, screen, waitFor } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import Profile from './Profile';
+import Profile, { ProfileSectionWithLoading } from './Profile';
 import axios from 'axios';
 import '@testing-library/jest-dom/extend-expect';
+import { mount } from 'enzyme';
+
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { profileConfig } from './ProfileConfig';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 const fakeProfileData = [
   {
@@ -44,35 +51,36 @@ describe('<Profile />', () => {
     const route = '/profile/1/user';
     history.push(route);
 
+    let wrapper;
+
     await act(async () => {
-      const { getByTestId } = render(
+      wrapper = mount(
         <Router history={history}>
           <Profile />
         </Router>,
       );
 
-      const profilePage = getByTestId('profile-page');
-
-      expect(profilePage.querySelector('h1')).toHaveTextContent('Your profile');
-    });
-  });
-
-  it('should render profile page with fake data', async () => {
-    await act(async () => {
-      const history = createMemoryHistory();
-      const route = '/profile/1/user';
-      history.push(route);
-      const { getByTestId } = render(
-        <Router history={history}>
-          <Profile />
-        </Router>,
+      expect(wrapper.find(ProfileSectionWithLoading).length).toEqual(
+        profileConfig.length,
       );
-
-      await waitFor(() => getByTestId('username'));
-
-      screen.debug();
-
-      expect(getByTestId('username')).toHaveValue('Samantha');
+      expect(
+        wrapper.find(ProfileSectionWithLoading).at(0).props().isLoading,
+      ).toEqual(true);
+      expect(
+        wrapper.find(ProfileSectionWithLoading).at(0).props().profileData,
+      ).toEqual(undefined);
     });
+
+    wrapper.update();
+
+    expect(axios.get).toHaveBeenCalledTimes(1);
+
+    expect(
+      wrapper.find(ProfileSectionWithLoading).at(0).props().isLoading,
+    ).toEqual(false);
+
+    expect(
+      wrapper.find(ProfileSectionWithLoading).at(0).props().profileData,
+    ).toEqual(fakeProfileData);
   });
 });

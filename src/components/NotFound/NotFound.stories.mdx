@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import NotFound from './NotFound';
+
+<Meta
+  title="Components/NotFound"
+  component={NotFound}
+/>
+
+# NotFound 
+
+### USAGE
+
+NotFound is used for showing that there is no page for current url.
+
+### EXAMPLES
+
+export const Template = () => <NotFound />;
+
+<Canvas>
+  <Story name='With icon'>
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Card from './Card';
+
+<Meta
+  title="Components/Card"
+  component={Card}
+/>
+
+# Card 
+
+### USAGE
+
+Cards are used for showing photos with title.
+
+### EXAMPLES
+
+export const Template = args => <Card {...args} />
+
+<Canvas>
+  <Story name='With image and title' args={{ title: 'Test title', col: 3, url: 'https://via.placeholder.com/150/1ee8a4' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

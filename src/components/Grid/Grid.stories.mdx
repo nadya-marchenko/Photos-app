@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Grid from './Grid';
+import Card from '../Card/Card';
+
+<Meta
+  title="Components/Grid"
+  component={Grid}
+/>
+
+# Grid 
+
+### USAGE
+
+Grids are used for showing photos with title.
+
+### EXAMPLES
+
+export const Template = args => (<Grid {...args}>
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                    <Card title='Test' col={args.col} url='https://via.placeholder.com/150/1ee8a4' />
+                                </Grid>);
+
+<Canvas>
+  <Story name='Max-columns: 3' args={{ col: 3 }}>
+    {Template.bind({})}
+  </Story>
+  <Story name='Max-columns: 4' args={{ col: 4 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

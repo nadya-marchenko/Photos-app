@@ -10,31 +10,24 @@ import { ProfileDataProps } from '../../components/ProfileSection/ProfileSection
 import { useParams } from 'react-router-dom';
 import { ProfileProps } from './Profile.d';
 
-const ProfileSectionWithLoading = WithLoading(ProfileSection);
+export const ProfileSectionWithLoading = WithLoading(ProfileSection);
 
 const Profile = () => {
   const [profileData, setProfileData] = React.useState<
     undefined | ProfileDataProps
   >();
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
-  const { user } = useParams<Record<string, string | undefined>>();
-
-  const userNumber: number | undefined = Number(user);
+  const { userId } = useParams<Record<string, string>>();
 
   useEffect(() => {
+    setIsLoading(true);
     axios
-      .get(`${API_URL}/users`)
-      .then(({ data }) => {
-        const [currentUserData] = data.filter(
-          (el: { id: number | undefined }) => el.id === userNumber,
-        );
-        setProfileData(currentUserData);
-      })
+      .get(`${API_URL}/users/${userId}`)
+      .then(({ data }) => setProfileData(data))
       .catch(({ data }) => checkErrorsFromAPI(data))
       .finally(() => setIsLoading(false));
-    setIsLoading(true);
-  }, [user, userNumber]);
+  }, [userId]);
 
   return (
     <div data-testid="profile-page">
