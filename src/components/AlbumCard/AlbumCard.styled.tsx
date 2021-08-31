@@ -53,4 +53,8 @@ export const BtnWrapper = styled.div`
       vertical-align: middle;
     }
   }
+
+  & button {
+    padding: 4px 8px 27px 12px;
+  }
 `;
