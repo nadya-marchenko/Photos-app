@@ -3,7 +3,7 @@ export interface CardProps {
   title: string;
   col: number;
   id: number;
-  handleZoom: (id: number) => any;
+  handleZoom: (id: number) => void;
   key?: number;
 }
 

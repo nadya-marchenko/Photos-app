@@ -11,14 +11,14 @@ import axios from 'axios';
 import { checkErrorsFromAPI } from '../../utils';
 import { API_URL } from '../../global/app-config-constants';
 import { AlbumProps } from './AlbumCard.d';
-import { PhotosProps } from '../../pages/Photos/Photos.d';
+import { Photos } from '../../pages/Photos/Photos.d';
 
 const AlbumCard = ({ link, title, previewPhotosNum, albumId }: AlbumProps) => {
-  const [previewPhotos, setPreviewPhotos] = React.useState<PhotosProps[]>([]);
+  const [previewPhotos, setPreviewPhotos] = React.useState<Photos[]>([]);
 
   useEffect(() => {
     axios
-      .get<PhotosProps[]>(`${API_URL}/albums/${albumId}/photos`)
+      .get<Photos[]>(`${API_URL}/albums/${albumId}/photos`)
       .then(({ data }) => setPreviewPhotos(data))
       .catch(({ data }) => checkErrorsFromAPI(data));
   }, [albumId]);
@@ -31,7 +31,7 @@ const AlbumCard = ({ link, title, previewPhotosNum, albumId }: AlbumProps) => {
       <section>
         {previewPhotos
           .slice(0, previewPhotosNum)
-          .map(({ id, thumbnailUrl, title }: PhotosProps) => (
+          .map(({ id, thumbnailUrl, title }: Photos) => (
             <img
               key={id}
               src={thumbnailUrl}

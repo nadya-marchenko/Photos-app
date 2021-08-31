@@ -1,4 +1,4 @@
-export interface PhotosProps {
+export interface Photos {
   albumId?: number;
   id: number;
   thumbnailUrl: string;
