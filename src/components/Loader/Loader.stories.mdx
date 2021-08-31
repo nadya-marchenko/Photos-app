@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Loader from './Loader';
+
+<Meta
+  title="Components/Loader"
+  component={Loader}
+/>
+
+# Loader 
+
+### USAGE
+
+Loader is used for showing loading process.
+
+### EXAMPLES
+
+export const Template = () => <Loader />;
+
+<Canvas>
+  <Story name='With icon'>
+    {Template.bind({})}
+  </Story>
+</Canvas>

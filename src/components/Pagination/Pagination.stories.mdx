@@ -1,0 +1,23 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import Pagination from './Pagination';
+
+<Meta
+  title="Components/Pagination"
+  component={Pagination}
+/>
+
+# Pagination 
+
+### USAGE
+
+Pagination is used for navigation between pages. You can choose showed amount of elements per page.
+
+### EXAMPLES
+
+export const Template = args => <Pagination {...args} />;
+
+<Canvas>
+  <Story name='With per page selector' args={{ activePage: 3, pageNum: 10, showedAmount: 5, selectFor: 'photos' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
